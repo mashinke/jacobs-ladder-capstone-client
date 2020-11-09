@@ -4,6 +4,7 @@ import './App.css';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
 import StaticMain from '../StaticMain/StaticMain';
+import SignupMain from '../SignupMain/SignupMain';
 
 class App extends Component {
   staticPaths() {
@@ -15,6 +16,15 @@ class App extends Component {
       )
     })
   }
+
+  signupPath() {
+    return (
+      <Route path='/signup'
+        component={SignupMain}
+      />
+    )
+  }
+
   render() {
     console.log('App render()')
     return (
@@ -22,6 +32,7 @@ class App extends Component {
         <Header />
         <Nav />
         {this.staticPaths()}
+        {this.signupPath()}
       </BrowserRouter>
     );
   }
