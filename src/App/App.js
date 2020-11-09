@@ -6,6 +6,7 @@ import Nav from '../Nav/Nav';
 import StaticMain from '../StaticMain/StaticMain';
 import SignupMain from '../SignupMain/SignupMain';
 import LoginMain from '../LoginMain/LoginMain';
+import SetupGameMain from '../SetupGameMain/SetupGameMain';
 
 class App extends Component {
   staticPaths() {
@@ -35,6 +36,14 @@ class App extends Component {
     )
   }
 
+  gameSetupPath() {
+    return (
+      <Route path='/game/setup'
+        component={SetupGameMain}
+      />
+    )
+  }
+
   render() {
     console.log('App render()')
     return (
@@ -44,6 +53,7 @@ class App extends Component {
         {this.staticPaths()}
         {this.signupPath()}
         {this.loginPath()}
+        {this.gameSetupPath()}
       </BrowserRouter>
     );
   }
