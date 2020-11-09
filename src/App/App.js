@@ -10,6 +10,7 @@ class App extends Component {
     return ['/', '/rules'].map(path => {
       return (
         <Route exact path={path}
+          key={path}
           component={StaticMain}
         />
       )
