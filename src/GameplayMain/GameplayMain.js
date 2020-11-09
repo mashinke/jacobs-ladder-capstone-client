@@ -1,14 +1,19 @@
 import React, { Component } from 'react';
+import GameTime from '../GameTime/GameTime';
 import dummyStore from './dummy_store';
 
 export default class GamePlayMain extends Component {
+  state = {
+    game_state: {}
+  }
+  componentDidMount() {
+    this.setState({ ...dummyStore })
+  }
   render() {
     return (
       <main className='base game'>
-        <section className='game-time'>
-          <div>Game Time:</div>
-          <div>18:36</div>
-        </section>
+        <GameTime
+          time={this.state.time_elapsed} />
         <section className='game-status'>
           <section className='square-container'>
             <p>stages</p>
