@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import dummyStore from './dummy_store';
 
 export default class GamePlayMain extends Component {
   render() {
