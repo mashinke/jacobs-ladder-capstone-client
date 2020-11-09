@@ -1,5 +1,6 @@
 import React from 'react';
 import FormComponent from '../FormComponent/FormComponent';
+import FormInput from '../FormInput/FormInput';
 
 export default class SetupGameMain extends FormComponent {
 
@@ -56,33 +57,30 @@ export default class SetupGameMain extends FormComponent {
       <main>
         <h2>Set Up Game</h2>
         <form onSubmit={event => this.onSubmit(event)}>
-          <p>
-            <label htmlFor='players'>Number of Players: </label>
-            <input
-              onChange={e => this.onFieldChange(e.target)}
-              onBlur={e => this.onBlur(e.target)}
-              className='setup-number'
-              id='players' type="number"
-              value={this.state.players.value} />
-          </p>
-          {
-            !this.validatePlayers() &&
-            <p className='error'>Must be at least one player and no more than 4</p>
-          }
-          <p>
-            <label htmlFor='gameLength'>Game Length: </label>
-            <input
-              onChange={e => this.onFieldChange(e.target)}
-              onBlur={e => this.onBlur(e.target)}
-              className='setup-number'
-              id='gameLength'
-              type="number"
-              value={this.state.gameLength.value} /> stages
-          </p>
-          {
-            !this.validateGameLength() &&
-            <p className='error'>Game length must be at least 3 stages and no more than 18</p>
-          }
+          <FormInput
+            {...this.state.players}
+            label='Players: '
+            id='players'
+            onChange={this.onFieldChange}
+            onBlur={this.onBlur}
+            className='setup-number'
+            type='number'
+            validator={this.validatePlayers}
+            validateTouch={false}
+            validationMessage='Must be at least one player and no more than 4'
+          />
+          <FormInput
+            {...this.state.gameLength}
+            label='Game Length: '
+            id='gameLength'
+            onChange={this.onFieldChange}
+            onBlur={this.onBlur}
+            className='setup-number'
+            type='number'
+            validator={this.validateGameLength}
+            validateTouch={false}
+            validationMessage='Game length must be at least 3 stages and no more than 18'
+          />
           <p>
             <label htmlFor='hints'>Hints</label>
           </p>

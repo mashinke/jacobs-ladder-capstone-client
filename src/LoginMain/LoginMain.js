@@ -23,6 +23,7 @@ export default class SignupMain extends UserFormComponent {
       validator: this.validateEmail,
       validationMessage: 'Valid email required',
       label: 'Email',
+      validateTouch: true,
       type:'text'
     },
     {
@@ -30,6 +31,7 @@ export default class SignupMain extends UserFormComponent {
       validator: this.validatePassword,
       validationMessage: 'Password must be at least 8 characters',
       label: 'Password',
+      validateTouch: true,
       type: 'password'
     }
   ]

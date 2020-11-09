@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import FormComponent from '../FormComponent/FormComponent';
+import FormInput from '../FormInput/FormInput';
 
 export default class UserFormComponent extends FormComponent {
   validateEmail = () => {
@@ -23,24 +24,14 @@ export default class UserFormComponent extends FormComponent {
   }
   renderFields() {
     return this.formFields.map(field => {
-      const error = field.validator()
       return (
-        <div key={field.id}>
-          <p>
-            <label htmlFor={field.id}>{field.label}</label>
-          </p>
-          <p>
-            <input
-              onChange={e => this.onFieldChange(e.target)}
-              onBlur={e => this.onBlur(e.target)}
-              value={this.state[field.id].value}
-              id={field.id}
-              type={field.type} />
-          </p>
-          {
-            ((this.state[field.id].touched && !error) && <p className='error'>{field.validationMessage}</p>)
-          }
-        </div>
+        <FormInput
+          {...field}
+          value={this.state[field.id].value}
+          touched={this.state[field.id].touched}
+          onChange={this.onFieldChange}
+          onBlur={this.onBlur}
+        />
       )
     })
   }

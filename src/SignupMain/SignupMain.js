@@ -7,14 +7,17 @@ export default class SignupMain extends UserFormComponent {
     error: null,
     email: {
       value: '',
+      validateTouch: true,
       touched: false
     },
     pass: {
       value: '',
+      validateTouch: true,
       touched: false
     },
     passTwo: {
       value: '',
+      validateTouch: true,
       touchd: false
     }
   }
@@ -31,21 +34,24 @@ export default class SignupMain extends UserFormComponent {
       validator: this.validateEmail,
       validationMessage: 'Valid email required',
       label: 'Email',
-      type: 'text'
+      type: 'text',
+      validateTouch: true
     },
     {
       id: 'pass',
       validator: this.validatePassword,
       validationMessage: 'Password must be at least 8 characters',
       label: 'Password',
-      type: 'password'
+      type: 'password',
+      validateTouch: true
     },
     {
       id: 'passTwo',
       validator: this.validatePasswordTwo,
       validationMessage: 'Passwords must match',
       label: 'Verify Password',
-      type: 'password'
+      type: 'password',
+      validateTouch: false
     }
   ]
 
