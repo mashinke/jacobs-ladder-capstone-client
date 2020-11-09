@@ -5,6 +5,7 @@ import './Nav.css';
 export default function Nav(props) {
   const gameSetupNav = ['/game/setup'].map(path =>
     <Route path={path}
+      key={path}
       render={
         props => {
           return (
@@ -23,6 +24,7 @@ export default function Nav(props) {
   const simpleNavRoutes = ['/login', '/signup', '/game/play'].map(path => {
     return (
       <Route path={path}
+        key={path}
         render={
           props => {
             return (
@@ -40,6 +42,7 @@ export default function Nav(props) {
   const fullNavRoutes = ['/', '/rules'].map(path =>
     (
       <Route path={path}
+        key={path}
         render={
           props => {
             return (
