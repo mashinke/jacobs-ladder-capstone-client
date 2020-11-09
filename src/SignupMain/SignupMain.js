@@ -21,7 +21,27 @@ export default class SignupMain extends Component {
   onFieldChange = (element) => {
     const field = element.id;
     const value = element.value;
+    const touched = this.state[field].touched;
+    this.setState({ [field]: { value, touched } })
+  }
+
+  onBlur = (element) => {
+    const field = element.id;
+    const value = this.state[field].value;
     this.setState({ [field]: { value, touched: true } })
+  }
+
+  validateEmail = () => {
+    return /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(this.state.email.value)
+  }
+
+  validatePassword = () => {
+    console.log(this.state.pass)
+    return this.state.pass.value.length > 7;
+  }
+
+  validatePasswordTwo = () => {
+    return this.state.pass.value === this.state.passTwo.value;
   }
 
   render() {
@@ -33,21 +53,51 @@ export default class SignupMain extends Component {
             <label htmlFor='email'>Email</label>
           </p>
           <p>
-            <input onChange={e => this.onFieldChange(e.target)} value={this.state.email.value} id='email' type="text" />
+            <input
+              onChange={e => this.onFieldChange(e.target)}
+              onBlur={e => this.onBlur(e.target)}
+              value={this.state.email.value}
+              id='email'
+              type="text" />
           </p>
+          {
+            (this.state.email.touched && !this.validateEmail()) && <p className='error'>Valid email required</p>
+          }
           <p>
             <label htmlFor='pass'>Password</label>
           </p>
           <p>
-            <input onChange={e => this.onFieldChange(e.target)} value={this.state.pass.value} id='pass' type="password" />
+            <input
+              onChange={e => this.onFieldChange(e.target)}
+              onBlur={e => this.onBlur(e.target)}
+              value={this.state.pass.value}
+              id='pass'
+              type="password" />
           </p>
+          {
+            (this.state.pass.touched && !this.validatePassword()) && <p className='error'>Password must be at least 8 characters</p>
+          }
           <p>
             <label htmlFor='passTwo'>Verify Password</label>
           </p>
           <p>
-            <input onChange={e => this.onFieldChange(e.target)} value={this.state.passTwo.value} id='passTwo' type="password" />
+            <input
+              onChange={e => this.onFieldChange(e.target)}
+              onBlur={e => this.onBlur(e.target)}
+              value={this.state.passTwo.value}
+              id='passTwo'
+              type="password" />
           </p>
-          <button type="submit">Sign Up</button>
+          {
+            (this.state.passTwo.touched && !this.validatePasswordTwo()) && <p className='error'>Password must be identical</p>
+          }
+          <button
+            disabled={
+              !this.validateEmail() ||
+              !this.validatePassword() ||
+              !this.validatePasswordTwo()
+            }
+            type="submit">Sign Up</button>
         </form>
         <p><Link to='/login'>Log In</Link></p>
       </main>
