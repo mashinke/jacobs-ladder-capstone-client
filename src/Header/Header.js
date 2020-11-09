@@ -1,11 +1,17 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './Header.css';
 
 export default function Header(props) {
   return (
-    <>
-      <Route exact path='/'
+    <Switch>
+      <Route path='/game'
+        render={(props) => (
+          <header className='base'>
+            <h1 className='small-masthead'>Jacob's Ladder</h1>
+          </header>
+        )} />
+      <Route path='/'
         render={(props) => (
           <header class='base'>
             <div class='hero'>
@@ -13,13 +19,7 @@ export default function Header(props) {
             </div>
           </header>
         )} />
-      <Route path='/game'
-        render={(props) => (
-          <header className='base'>
-            <h1 className='small-masthead'>Jacob's Ladder</h1>
-          </header>
-        )} />
-    </>
+    </Switch>
   )
 
 }
