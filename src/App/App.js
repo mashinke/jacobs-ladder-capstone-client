@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Header from '../Header/Header'
+import Header from '../Header/Header';
+import Nav from '../Nav/Nav';
 
 class App extends Component {
   render() {
@@ -9,11 +10,7 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Header />
-        <nav className='base'>
-          <ul className='navigation'>
-            <li><a href='landing.html' className='navlink'>Home</a></li>
-          </ul>
-        </nav>
+        <Nav />
         <main className='base game'>
           <section className='game-time'>
             <div>Game Time:</div>
