@@ -44,11 +44,16 @@ export default class SignupMain extends Component {
     return this.state.pass.value === this.state.passTwo.value;
   }
 
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.history.push('/game/setup');
+  }
+
   render() {
     return (
       <main className='base'>
         <h2>Signup</h2>
-        <form>
+        <form onSubmit={event => this.onSubmit(event)}>
           <p>
             <label htmlFor='email'>Email</label>
           </p>
