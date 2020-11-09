@@ -36,7 +36,11 @@ export default class SetupGameMain extends FormComponent {
 
   onSubmit = event => {
     event.preventDefault();
+    this.props.history.push('/game/play')
   }
+
+
+  
   render() {
     return (
       <main>
