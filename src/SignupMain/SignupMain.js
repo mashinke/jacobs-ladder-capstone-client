@@ -36,7 +36,6 @@ export default class SignupMain extends Component {
   }
 
   validatePassword = () => {
-    console.log(this.state.pass)
     return this.state.pass.value.length > 7;
   }
 
