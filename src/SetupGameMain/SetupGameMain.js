@@ -1,4 +1,5 @@
 import React from 'react';
+import config from '../config';
 import FormComponent from '../FormComponent/FormComponent';
 import FormInput from '../FormInput/FormInput';
 
@@ -35,8 +36,26 @@ export default class SetupGameMain extends FormComponent {
     this.setState({ hintLimited: { value: true, touched: true } })
   }
 
-  onSubmit = event => {
+  onSubmit = async event => {
     event.preventDefault();
+    const payload = {
+      gameLength: this.state.gameLength.value
+    };
+    if(this.state.hintLimited.value) {
+      payload.hintLimited = true;
+      payload.hintLimit = this.state.hintLimit.value;
+    } else {
+      payload.hintLimited = false;
+    }
+    console.log('payload', payload)
+    const response = await fetch(`${config.API_BASEURL}/game`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    console.log('fetch response', response)
     this.props.history.push('/game/play')
   }
 
