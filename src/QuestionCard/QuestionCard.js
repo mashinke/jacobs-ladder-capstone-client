@@ -1,5 +1,6 @@
 import React from 'react';
 import AnswerInput from '../AnswerInput/AnswerInput';
+import './QuestionCard.css';
 
 export default function QuestionCard(props) {
   console.log(props)
@@ -12,7 +13,7 @@ export default function QuestionCard(props) {
       />)
     return (
       <form className='card'>
-        <div className='challenge-img'>challenge image</div>
+        <div className='challenge-img'>{props.card.altText}</div>
         <p className='challenge-text'>{props.card.questionText}</p>
         <section className='challenge-answers'>
           <div className='column'>
@@ -22,11 +23,9 @@ export default function QuestionCard(props) {
         <div className='challenge-actions'>
           <button>Roll</button>
           <button>Hint</button>
-          <button
-            onClick={e => props.getChallenge(e)}
-          >
-            Challenge
-            </button>
+          <button type='button' onClick={() => props.toggleOnSkip()} >
+            {props.onSkip ? 'Challenge' : 'Roll'}
+          </button>
         </div>
       </form>
     )

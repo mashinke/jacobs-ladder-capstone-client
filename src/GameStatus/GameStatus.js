@@ -20,19 +20,19 @@ export default function GameStatus(props) {
           <li>
             <div className='label'>Hints</div>
             <div className='datum'>
-              {props.hintsUsed}/{props.maxHints}
+              {props.hintsUsed || 0}/{props.maxHints}
             </div>
           </li>
           <li>
             <div className='label'>Rolls</div>
             <div className='datum'>
-              {props.successfulRolls}/{props.totalRolls}
+              {props.successfulRolls || 0}/{props.totalRolls || 0}
             </div>
           </li>
           <li>
             <div className='label'>Skips</div>
             <div className='datum'>
-              {props.successfulSkips}/{props.totalSkips}
+              {props.successfulSkips || 0}/{props.totalSkips || 0}
             </div>
           </li>
         </ul>

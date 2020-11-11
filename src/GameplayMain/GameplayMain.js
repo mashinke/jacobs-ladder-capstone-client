@@ -7,23 +7,22 @@ import apiHelpers from '../apiHelpers';
 export default class GamePlayMain extends Component {
   state = {}
 
-  getChallenge = (e) => {
-    e.preventDefault();
-    this.setState({ activeCard: this.state.skipCard })
+  onAnswerChange = (answer) => {
+    this.setState({ answer });
   }
 
-  onAnswerChange = (answer) => {
-    this.setState({answer});
+  toggleOnSkip = () => {
+    this.setState({ onSkip: !this.state.onSkip })
   }
 
   async componentDidMount() {
     // this.setState({ ...dummyStore });
     const gameData = await apiHelpers.fetchGame();
-    this.setState({...gameData, activeCard: gameData.rollCard});
+    this.setState({ ...gameData, onSkip: false });
   }
 
   render() {
-    if(!this.state.gameState) {
+    if (!this.state.gameState) {
       console.log('GameplayMain loading...', this.state.gameState)
       return <p>loading turn...</p>
     }
@@ -40,9 +39,10 @@ export default class GamePlayMain extends Component {
         />
 
         <QuestionCard
-          card={this.state.activeCard}
-          getChallenge={this.getChallenge}
+          card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
           onAnswerChange={this.onAnswerChange}
+          toggleOnSkip={this.toggleOnSkip}
+          onSkip={this.state.onSkip}
         />
       </main>
     )
