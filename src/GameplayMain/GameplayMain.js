@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GameTime from '../GameTime/GameTime';
+// import GameTime from '../GameTime/GameTime';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import apiHelpers from '../apiHelpers';
@@ -30,8 +30,8 @@ export default class GamePlayMain extends Component {
     console.log('GameState main return', this.state)
     return (
       <main className='base game'>
-        <GameTime
-          time={this.state.timeElapsed} />
+        {/* <GameTime
+          time={this.state.timeElapsed} /> */}
 
         <GameStatus
           {...this.state.gameState}
