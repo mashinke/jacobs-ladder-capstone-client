@@ -43,8 +43,7 @@ export default class SetupGameMain extends FormComponent {
     } else {
       payload.hintLimit = false;
     }
-    console.log('payload', payload)
-    apiHelpers.postGame(payload);
+    await apiHelpers.postGame(payload);
     this.props.history.push('/game/play')
   }
 
@@ -58,7 +57,6 @@ export default class SetupGameMain extends FormComponent {
 
   async componentDidMount() {
     const { gameSettings } = await apiHelpers.fetchGame();
-    console.log(gameSettings)
     const { totalStages, hintLimit, maxHints } = gameSettings;
     this.setState({
       totalStages: {
