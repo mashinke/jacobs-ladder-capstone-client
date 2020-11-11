@@ -13,7 +13,7 @@ export default function Nav(props) {
               <ul className='navigation'>
                 <li><Link to='/' className='navlink'>Home</Link></li>
                 <li><Link to='/game/scores' className='navlink'>Scores</Link></li>
-                <li><Link to='/game/restore' className='navlink'>Restore Game</Link></li>
+                <li><Link to='/game/play' className='navlink'>Restore Game</Link></li>
               </ul>
             </nav>
           )

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import GameTime from '../GameTime/GameTime';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
-import dummyStore from './dummy_store';
-import config from '../config';
 import apiHelpers from '../apiHelpers';
 
 export default class GamePlayMain extends Component {
@@ -22,7 +20,6 @@ export default class GamePlayMain extends Component {
     // this.setState({ ...dummyStore });
     const gameData = await apiHelpers.fetchGame();
     this.setState({...gameData, activeCard: gameData.rollCard});
-    this.setState({ activeCard: dummyStore.rollCard })
   }
 
   render() {
