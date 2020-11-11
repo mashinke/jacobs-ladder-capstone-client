@@ -4,8 +4,6 @@ import PositionDisplay from '../PositionDisplay/PositionDisplay';
 export default function GameStatus(props) {
   const currentStage = Math.floor(props.position / props.stageSize) + 1;
   const currentPosInStage = props.position % props.stageSize;
-  console.log(props.stageSize, props.position)
-  console.log(currentStage)
   return (
     <section className='game-status'>
       <PositionDisplay
