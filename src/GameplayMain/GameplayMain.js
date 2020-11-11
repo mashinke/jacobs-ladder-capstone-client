@@ -3,17 +3,10 @@ import GameTime from '../GameTime/GameTime';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import dummyStore from './dummy_store';
+import config from '../config';
 
 export default class GamePlayMain extends Component {
-  state = {
-    gameState: {},
-    gameSettings: {},
-    rollCard: {},
-    skipCard: {},
-    activeCard: {},
-    timeElapsed: {},
-    answer: ''
-  }
+  state = {}
 
   getChallenge = (e) => {
     e.preventDefault();
@@ -24,12 +17,21 @@ export default class GamePlayMain extends Component {
     this.setState({answer});
   }
 
-  componentDidMount() {
-    this.setState({ ...dummyStore });
+  async componentDidMount() {
+    // this.setState({ ...dummyStore });
+    const response = await fetch(`${config.API_BASEURL}/game`)
+    const gameData = await response.json();
+    this.setState({...gameData, activeCard: gameData.rollCard});
     this.setState({ activeCard: dummyStore.rollCard })
   }
 
   render() {
+    if(!this.state.gameState) {
+      console.log('GameplayMain loading...', this.state.gameState)
+      return <p>loading turn...</p>
+    }
+
+    console.log('GameState main return', this.state)
     return (
       <main className='base game'>
         <GameTime
