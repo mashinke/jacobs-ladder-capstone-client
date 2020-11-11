@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import apiHelpers from '../apiHelpers';
+import Loading from '../Loading/Loading';
 
 export default class GamePlayMain extends Component {
   state = {}
@@ -24,7 +25,7 @@ export default class GamePlayMain extends Component {
   render() {
     if (!this.state.gameState) {
       console.log('GameplayMain loading...', this.state.gameState)
-      return <p>loading turn...</p>
+      return <Loading label='Game' />
     }
 
     console.log('GameState main return', this.state)
