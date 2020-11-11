@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GameTime from '../GameTime/GameTime';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
+import Loading from '../Loading/Loading';
 import dummyStore from './dummy_store';
 import config from '../config';
 
@@ -28,7 +29,7 @@ export default class GamePlayMain extends Component {
   render() {
     if(!this.state.gameState) {
       console.log('GameplayMain loading...', this.state.gameState)
-      return <p>loading turn...</p>
+      return <Loading label='Game' />
     }
 
     console.log('GameState main return', this.state)
