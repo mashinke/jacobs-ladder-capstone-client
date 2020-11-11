@@ -24,7 +24,7 @@ export default function QuestionCard(props) {
           <button>Roll</button>
           <button>Hint</button>
           <button type='button' onClick={() => props.toggleOnSkip()} >
-            {props.onSkip ? 'Challenge' : 'Roll'}
+            {props.onSkip ? 'Roll' : 'Challenge'}
           </button>
         </div>
       </form>
