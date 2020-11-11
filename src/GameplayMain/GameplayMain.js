@@ -4,6 +4,7 @@ import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import dummyStore from './dummy_store';
 import config from '../config';
+import apiHelpers from '../apiHelpers';
 
 export default class GamePlayMain extends Component {
   state = {}
@@ -19,8 +20,7 @@ export default class GamePlayMain extends Component {
 
   async componentDidMount() {
     // this.setState({ ...dummyStore });
-    const response = await fetch(`${config.API_BASEURL}/game`)
-    const gameData = await response.json();
+    const gameData = await apiHelpers.fetchGame();
     this.setState({...gameData, activeCard: gameData.rollCard});
     this.setState({ activeCard: dummyStore.rollCard })
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import config from '../config';
+import apiHelpers from '../apiHelpers';
 import FormComponent from '../FormComponent/FormComponent';
 import FormInput from '../FormInput/FormInput';
 
@@ -7,19 +7,15 @@ export default class SetupGameMain extends FormComponent {
 
   state = {
     error: null,
-    players: {
-      value: 1,
-      touched: false
-    },
-    gameLength: {
+    totalStages: {
       value: 6,
       touched: false
     },
-    hintLimited: {
+    hintLimit: {
       value: false,
       touched: false
     },
-    hintLimit: {
+    maxHints: {
       value: 18,
       touched: false
     }
@@ -28,48 +24,57 @@ export default class SetupGameMain extends FormComponent {
   onhintLimitedChange = (element) => {
     const value = element.id === 'limited'
 
-    this.setState({ hintLimited: { value, touched: true } })
+    this.setState({ hintLimit: { value, touched: true } })
   }
 
   onHintLimitChange = (value) => {
-    this.setState({ hintLimit: { value, touched: true } })
-    this.setState({ hintLimited: { value: true, touched: true } })
+    this.setState({ maxHints: { value, touched: true } })
+    this.setState({ hintLimit: { value: true, touched: true } })
   }
 
   onSubmit = async event => {
     event.preventDefault();
     const payload = {
-      gameLength: this.state.gameLength.value
+      totalStages: this.state.totalStages.value
     };
-    if(this.state.hintLimited.value) {
-      payload.hintLimited = true;
-      payload.hintLimit = this.state.hintLimit.value;
+    if (this.state.hintLimit.value) {
+      payload.hintLimit = true;
+      payload.maxHints = this.state.maxHints.value;
     } else {
-      payload.hintLimited = false;
+      payload.hintLimit = false;
     }
     console.log('payload', payload)
-    const response = await fetch(`${config.API_BASEURL}/game`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    })
-    console.log('fetch response', response)
+    apiHelpers.postGame(payload);
     this.props.history.push('/game/play')
   }
 
   validateGameLength = () => {
-    return this.state.gameLength.value > 2 && this.state.gameLength.value < 18;
-  }
-
-  validatePlayers = () => {
-    return this.state.players.value > 0 && this.state.players.value < 4
+    return this.state.totalStages.value > 2 && this.state.totalStages.value < 18;
   }
 
   validateHintLimit = () => {
-    return this.state.hintLimit.value >= 0;
+    return this.state.maxHints.value >= 0;
   }
+
+  async componentDidMount() {
+    const { gameSettings } = await apiHelpers.fetchGame();
+    console.log(gameSettings)
+    const { totalStages, hintLimit, maxHints } = gameSettings;
+    this.setState({
+      totalStages: {
+        value: totalStages,
+        touched: false
+      },
+      hintLimit: {
+        value: hintLimit,
+        touched: false
+      },
+      maxHints: {
+        value: maxHints || 18,
+        touched: false
+      }
+    })
+  };
 
   render() {
     return (
@@ -77,21 +82,9 @@ export default class SetupGameMain extends FormComponent {
         <h2>Set Up Game</h2>
         <form onSubmit={event => this.onSubmit(event)}>
           <FormInput
-            {...this.state.players}
-            label='Players: '
-            id='players'
-            onChange={this.onFieldChange}
-            onBlur={this.onBlur}
-            className='setup-number'
-            type='number'
-            validator={this.validatePlayers}
-            validateTouch={false}
-            validationMessage='Must be at least one player and no more than 4'
-          />
-          <FormInput
-            {...this.state.gameLength}
+            {...this.state.totalStages}
             label='Game Length: '
-            id='gameLength'
+            id='totalStages'
             onChange={this.onFieldChange}
             onBlur={this.onBlur}
             className='setup-number'
@@ -110,7 +103,7 @@ export default class SetupGameMain extends FormComponent {
                 name='limitRadio'
                 type="radio"
                 onChange={e => this.onhintLimitedChange(e.target)}
-                checked={!this.state.hintLimited.value}
+                checked={!this.state.hintLimit.value}
               />
               <label htmlFor='unlimited'>Unlimited</label>
             </p>
@@ -120,27 +113,26 @@ export default class SetupGameMain extends FormComponent {
                 name='limitRadio'
                 type="radio"
                 onChange={e => this.onhintLimitedChange(e.target)}
-                checked={this.state.hintLimited.value}
+                checked={this.state.hintLimit.value}
               />
               <label htmlFor='hint-limit'>Limit to:</label>
               <input
                 className='setup-number'
                 type="number"
                 id='hint-limit'
-                value={this.state.hintLimit.value}
+                value={this.state.maxHints.value}
                 onChange={e => this.onHintLimitChange(e.target.value)}
               />
             </p>
             {
-              this.state.hintLimit.touched && !this.validateHintLimit() &&
+              this.state.maxHints.touched && !this.validateHintLimit() &&
               <p className='error'>Cannot have negative hints</p>
             }
           </fieldset>
           <button
             disabled={
               !this.validateGameLength() ||
-              !this.validateHintLimit() ||
-              !this.validatePlayers()
+              !this.validateHintLimit()
             }
             type="submit">Start Game</button>
         </form>
