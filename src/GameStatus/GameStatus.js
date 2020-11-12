@@ -4,7 +4,7 @@ import GameStatusItem from '../GameStatusItem/GameStatusItem';
 import './GameStatus.css'
 
 export default function GameStatus(props) {
-  const currentStage = 1 || Math.ceil(props.position / props.stageSize);
+  const currentStage = Math.ceil(props.position / props.stageSize) || 1;
   const currentPosInStage = props.position % props.stageSize;
   const gameStausItems = [
     { 
