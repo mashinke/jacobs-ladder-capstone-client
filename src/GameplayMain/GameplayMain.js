@@ -65,6 +65,8 @@ export default class GamePlayMain extends Component {
           onAnswerClick={this.handleAnswerClick}
           selectedAnswer={this.state.answer}
           onHintClick={this.handleHintClick}
+          hintsUsed={this.state.gameState.hintsUsed}
+          maxHints={this.state.gameSettings.maxHints}
         />
       </main>
     )

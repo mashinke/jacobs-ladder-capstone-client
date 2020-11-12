@@ -12,6 +12,8 @@ export default function QuestionCard(props) {
         selectedAnswer={props.selectedAnswer}
         key={i}
       />)
+      console.log(props.hintsUsed >= props.maxHints)
+      console.log('hintsUsed', props.hintsUsed)
     return (
       <form className='card'>
         <div className='challenge-img'>{props.card.altText}</div>
@@ -27,7 +29,7 @@ export default function QuestionCard(props) {
           </button>
           <button 
             type='button' 
-            disabled={props.onSkip}
+            disabled={props.onSkip || props.hintsUsed >= props.maxHints}
             onClick={() => props.onHintClick()}>
             Get Hint
           </button>
