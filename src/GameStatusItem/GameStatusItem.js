@@ -5,7 +5,7 @@ export default function GameStatusItem(props) {
     <li>
       <div className='label'>{props.title}</div>
       <div className='datum'>
-        {props.number}{props.total && `/${props.total}`}
+        {props.number}{(props.total !== undefined) && `/${props.total}`}
       </div>
     </li>
   )

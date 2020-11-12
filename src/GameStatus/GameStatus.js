@@ -12,7 +12,7 @@ export default function GameStatus(props) {
       number: props.turnNumber },
     { 
       title: 'Hints',
-      number: props.hintsUsed,
+      number: props.hintsUsed || 0,
       total: props.maxHints 
     },
     { 
