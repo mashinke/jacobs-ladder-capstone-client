@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import apiHelpers from '../apiHelpers';
+import TokenService from '../Services/TokenService'
 import UserFormComponent from '../UserFormComponent/UserFormComponent';
 
-export default class SignupMain extends UserFormComponent {
+export default class LoginMain extends UserFormComponent {
   state = {
     error: null,
     email: {
@@ -14,6 +16,8 @@ export default class SignupMain extends UserFormComponent {
       touched: false
     }
   }
+
+  buttonText = 'Log in'
 
   formName = 'Login'
 
@@ -35,6 +39,14 @@ export default class SignupMain extends UserFormComponent {
       type: 'password'
     }
   ]
+
+  handleFormSubmit = async () => {
+    const { token }= await apiHelpers.postLogin(
+      this.state.email.value,
+      this.state.pass.value
+    )
+    TokenService.saveAuthToken(token);
+  }
 
   render() {
     return (

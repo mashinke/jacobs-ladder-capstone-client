@@ -14,7 +14,11 @@ export default class UserFormComponent extends FormComponent {
 
   onSubmit = (event) => {
     event.preventDefault();
-    this.props.history.push('/game/setup');
+    console.log(this)
+    this.handleFormSubmit()
+      .then(() =>
+        this.props.history.push('/game/setup')
+      )
   }
   allowSubmit() {
     return this.formFields.reduce((r, field) => {
@@ -43,7 +47,7 @@ export default class UserFormComponent extends FormComponent {
           {this.renderFields()}
           <button
             disabled={!this.allowSubmit()}
-            type="submit">Sign Up</button>
+            type="submit">{this.buttonText}</button>
         </form>
       </>
     )

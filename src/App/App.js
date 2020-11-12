@@ -8,6 +8,7 @@ import SignupMain from '../SignupMain/SignupMain';
 import LoginMain from '../LoginMain/LoginMain';
 import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 class App extends Component {
   staticPaths() {
@@ -39,7 +40,7 @@ class App extends Component {
 
   gameSetupPath() {
     return (
-      <Route path='/game/setup'
+      <ProtectedRoute path='/game/setup'
         component={SetupGameMain}
       />
     )
@@ -47,7 +48,7 @@ class App extends Component {
 
   gamePlayPath() {
     return (
-      <Route path='/game/play'
+      <ProtectedRoute path='/game/play'
         component={GamePlayMain}
       />
     )
