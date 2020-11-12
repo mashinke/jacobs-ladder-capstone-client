@@ -5,6 +5,7 @@ import QuestionCard from '../QuestionCard/QuestionCard';
 import apiHelpers from '../apiHelpers';
 import Loading from '../Loading/Loading';
 import TurnResultModal from '../TurnResultModal/TurnResultModal';
+import VictoryModal from '../VictoryModal/VictoryModal';
 
 export default class GamePlayMain extends Component {
   state = {}
@@ -46,6 +47,10 @@ export default class GamePlayMain extends Component {
     this.setState({ turnResult: undefined })
   }
 
+  handleNewGame = () => {
+    this.props.history.push('/game/setup');
+  }
+
   async componentDidMount() {
     // this.setState({ ...dummyStore });
     const gameData = await apiHelpers.fetchGame();
@@ -55,9 +60,6 @@ export default class GamePlayMain extends Component {
   render() {
     if (!this.state.gameSettings) {
       return <Loading label='Game' />
-    }
-    if (this.state.gameSettings.ended) {
-      return <p>You won the game!</p>
     }
     return (
       <main className='base game'>
@@ -76,8 +78,8 @@ export default class GamePlayMain extends Component {
               stageSize={this.state.gameSettings.stageSize}
               onContinue={this.handleTurnResultContinue}
             />
-            : this.state.gameState.ended
-            ? <p>You've won!</p>
+            : this.state.gameSettings.ended
+            ? <VictoryModal onClickNewGame={this.handleNewGame}/>
             : <QuestionCard
               card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
               onAnswerChange={this.onAnswerChange}
