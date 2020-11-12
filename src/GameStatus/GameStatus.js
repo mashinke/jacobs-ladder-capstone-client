@@ -5,7 +5,9 @@ import './GameStatus.css'
 
 export default function GameStatus(props) {
   const currentStage = Math.ceil(props.position / props.stageSize) + 1 || 1;
-  const currentPosInStage = props.position % props.stageSize;
+  let currentPosInStage;
+  if (currentStage > props.totalStages) currentPosInStage = props.stageSize;
+  else currentPosInStage = (props.position % props.stageSize) + 1;
   const gameStausItems = [
     { 
       title: 'Turns',
