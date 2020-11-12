@@ -2,7 +2,7 @@ import React from 'react';
 import './TurnResultModal.css';
 
 export default function TurnResultModal(props) {
-  const { roll, correctAnswer, useHint, skipSuccess, onContinue } = props;
+  const { roll, correctAnswer, useHint, skipSuccess, onContinue, stageSize } = props;
   let message;
   if (roll) {
     if (!useHint) {
@@ -15,7 +15,7 @@ export default function TurnResultModal(props) {
   } else {
     if (skipSuccess) {
       message =
-        `Congratulations! You answered correctly and advanced ${this.state.gameSettings.stageSize} to the next stage!`
+        `Congratulations! You answered correctly and advanced ${stageSize} to the next stage!`
     } else {
       message = `Unfortunately your answer was incorrect. The right answer was ${correctAnswer}.`
     }

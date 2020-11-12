@@ -53,18 +53,15 @@ export default class GamePlayMain extends Component {
   }
 
   render() {
-    if (!this.state.gameState) {
+    if (!this.state.gameSettings) {
       return <Loading label='Game' />
     }
-    if (this.state.turnResult) {
-      return <TurnResultModal 
-        {...this.state.turnResult}
-        onContinue={this.handleTurnResultContinue}
-       />
+    if (this.state.gameSettings.ended) {
+      return <p>You won the game!</p>
     }
     return (
       <main className='base game'>
-        {/* <GameTime
+        {/* <GameTime // not yet implemented
           time={this.state.timeElapsed} /> */}
 
         <GameStatus
@@ -72,17 +69,27 @@ export default class GamePlayMain extends Component {
           {...this.state.gameSettings}
         />
 
-        <QuestionCard
-          card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
-          onAnswerChange={this.onAnswerChange}
-          toggleOnSkip={this.toggleOnSkip}
-          onSkip={this.state.onSkip}
-          onAnswerClick={this.handleAnswerClick}
-          selectedAnswer={this.state.answer}
-          onHintClick={this.handleHintClick}
-          hintsUsed={this.state.gameState.hintsUsed}
-          maxHints={this.state.gameSettings.maxHints}
-        />
+        {
+          this.state.turnResult
+            ? <TurnResultModal
+              {...this.state.turnResult}
+              stageSize={this.state.gameSettings.stageSize}
+              onContinue={this.handleTurnResultContinue}
+            />
+            : this.state.gameState.ended
+            ? <p>You've won!</p>
+            : <QuestionCard
+              card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
+              onAnswerChange={this.onAnswerChange}
+              toggleOnSkip={this.toggleOnSkip}
+              onSkip={this.state.onSkip}
+              onAnswerClick={this.handleAnswerClick}
+              selectedAnswer={this.state.answer}
+              onHintClick={this.handleHintClick}
+              hintsUsed={this.state.gameState.hintsUsed}
+              maxHints={this.state.gameSettings.maxHints}
+            />
+        }
       </main>
     )
   }
