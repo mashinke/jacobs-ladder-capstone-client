@@ -6,8 +6,8 @@ export default function AnswerInput(props) {
       <input 
         name='answer' 
         type='radio'
-        value={props.answerText}
-        onChange={(e) => props.onAnswerChange(e.target.value)}
+        checked={props.answerText === props.selectedAnswer}
+        onChange={() => props.onAnswerChange(props.answerText)}
         />
       <label>{props.answerText}</label>
     </p>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './PositionDisplay.css'
 
 export default function PositionDisplay(props) {
   const makeSquares = [...Array(props.totalSquares).keys()].map((_, i) => {

@@ -1,7 +1,6 @@
 import React from 'react';
 
 export default function FormInput(props) {
-  console.log(props.id, props.validateTouch)
   return (
     <div key={props.id}>
           <p>

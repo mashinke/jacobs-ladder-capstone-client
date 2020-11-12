@@ -4,6 +4,8 @@ import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import apiHelpers from '../apiHelpers';
 import Loading from '../Loading/Loading';
+import TurnResultModal from '../TurnResultModal/TurnResultModal';
+import VictoryModal from '../VictoryModal/VictoryModal';
 
 export default class GamePlayMain extends Component {
   state = {}
@@ -16,22 +18,86 @@ export default class GamePlayMain extends Component {
     this.setState({ onSkip: !this.state.onSkip })
   }
 
+  handleAnswerClick = async () => {
+    const payload = {
+      gameId: this.state.gameSettings.gameId,
+      cardId: (this.state.onSkip)
+        ? this.state.skipCard.id
+        : this.state.rollCard.id,
+      skipCard: this.state.onSkip,
+      answer: this.state.answer,
+      useHint: this.state.useHint
+    }
+    const turnResult = await apiHelpers.postTurn(payload);
+    const gameData = await apiHelpers.fetchGame();
+    console.log(gameData)
+    await this.setState({
+      ...gameData,
+      answer: '',
+      onSkip: gameData.gameSettings.lastTurn ? true : false,
+      useHint: false,
+      turnResult
+    })
+  }
+
+  handleHintClick = async () => {
+    await this.setState({ useHint: true });
+    this.handleAnswerClick();
+  }
+
+  handleTurnResultContinue = () => {
+    this.setState({ turnResult: undefined })
+  }
+
+  handleNewGame = () => {
+    this.props.history.push('/game/setup');
+  }
+
   async componentDidMount() {
     // this.setState({ ...dummyStore });
     const gameData = await apiHelpers.fetchGame();
-    this.setState({ ...gameData, onSkip: false });
+    this.setState({
+      ...gameData,
+      onSkip: gameData.gameSettings.lastTurn ? true : false,
+    });
   }
 
   render() {
-    if (!this.state.gameState) {
-      console.log('GameplayMain loading...', this.state.gameState)
+    if (!this.state.gameSettings) {
       return <Loading label='Game' />
     }
 
-    console.log('GameState main return', this.state)
+    const modal = this.state.turnResult
+      ? <TurnResultModal
+        {...this.state.turnResult}
+        stageSize={this.state.gameSettings.stageSize}
+        onContinue={this.handleTurnResultContinue}
+      />
+      : this.state.gameSettings.ended
+        ? <VictoryModal onClickNewGame={this.handleNewGame} />
+        : this.state.gameSettings.lastTurn
+          ? <QuestionCard
+            card={this.state.skipCard}
+            onAnswerChange={this.onAnswerChange}
+            onAnswerClick={this.handleAnswerClick}
+            selectedAnswer={this.state.answer}
+            lastTurn={true}
+          />
+          : <QuestionCard
+            card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
+            onAnswerChange={this.onAnswerChange}
+            toggleOnSkip={this.toggleOnSkip}
+            onSkip={this.state.onSkip}
+            onAnswerClick={this.handleAnswerClick}
+            selectedAnswer={this.state.answer}
+            onHintClick={this.handleHintClick}
+            hintsUsed={this.state.gameState.hintsUsed}
+            maxHints={this.state.gameSettings.maxHints}
+          />
+
     return (
       <main className='base game'>
-        {/* <GameTime
+        {/* <GameTime // not yet implemented
           time={this.state.timeElapsed} /> */}
 
         <GameStatus
@@ -39,12 +105,7 @@ export default class GamePlayMain extends Component {
           {...this.state.gameSettings}
         />
 
-        <QuestionCard
-          card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
-          onAnswerChange={this.onAnswerChange}
-          toggleOnSkip={this.toggleOnSkip}
-          onSkip={this.state.onSkip}
-        />
+        { modal}
       </main>
     )
   }

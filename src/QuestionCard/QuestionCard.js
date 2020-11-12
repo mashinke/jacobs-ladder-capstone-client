@@ -1,16 +1,42 @@
 import React from 'react';
 import AnswerInput from '../AnswerInput/AnswerInput';
+import Loading from '../Loading/Loading';
 import './QuestionCard.css';
 
 export default function QuestionCard(props) {
-  console.log(props)
   if (props.card.answers) {
-    const answerDivs = props.card.answers.map((ans, i) =>
+    const answerDivs = props.card.answers.map((answerText, i) =>
       <AnswerInput
-        answerText={ans}
+        answerText={answerText}
         onAnswerChange={props.onAnswerChange}
+        selectedAnswer={props.selectedAnswer}
         key={i}
       />)
+    console.log(props.hintsUsed >= props.maxHints)
+    console.log('hintsUsed', props.hintsUsed)
+    let cardActions = [(
+      <button type='button' onClick={() => props.onAnswerClick()}>
+        Answer
+      </button>
+    )]
+    if (!props.lastTurn) {
+      cardActions = [
+        ...cardActions, (
+          <button
+            type='button'
+            disabled={
+              props.onSkip || props.hintsUsed >= props.maxHints}
+            onClick={() => props.onHintClick()}>
+            Get Hint
+          </button>
+        ), (
+          <button
+            type='button'
+            onClick={() => props.toggleOnSkip()} >
+            {props.onSkip ? 'Roll' : 'Challenge'}
+          </button>
+        )]
+    }
     return (
       <form className='card'>
         <div className='challenge-img'>{props.card.altText}</div>
@@ -21,14 +47,10 @@ export default function QuestionCard(props) {
           </div>
         </section>
         <div className='challenge-actions'>
-          <button>Roll</button>
-          <button>Hint</button>
-          <button type='button' onClick={() => props.toggleOnSkip()} >
-            {props.onSkip ? 'Roll' : 'Challenge'}
-          </button>
+        {cardActions}
         </div>
       </form>
     )
   }
-  else { console.log('loading...'); return ('loading') }
+  else { return <Loading label='Card' /> }
 }

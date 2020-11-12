@@ -1,4 +1,5 @@
 import React from 'react';
+import './GameTime.css'
 
 export default function GameTime(props) {
   const seconds = props.time % 60
