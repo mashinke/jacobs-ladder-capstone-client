@@ -1,11 +1,31 @@
 import React from 'react';
 import PositionDisplay from '../PositionDisplay/PositionDisplay';
+import GameStatusItem from '../GameStatusItem/GameStatusItem';
+import './GameStatus.css'
 
 export default function GameStatus(props) {
-  const currentStage = Math.floor(props.position / props.stageSize) + 1;
+  const currentStage = 1 || Math.ceil(props.position / props.stageSize);
   const currentPosInStage = props.position % props.stageSize;
-  console.log(props.stageSize, props.position)
-  console.log(currentStage)
+  const gameStausItems = [
+    { 
+      title: 'Turns',
+      number: props.turnNumber },
+    { 
+      title: 'Hints',
+      number: props.hintsUsed,
+      total: props.maxHints 
+    },
+    { 
+      title: 'Rolls',
+      number: props.successfulRolls || 0,
+      total: props.totalRolls || 0
+    },
+    {
+      title: 'Skips',
+      number: props.successfulSkips || 0,
+      total: props.totalSkips || 0
+    }
+  ].map(item => <GameStatusItem {...item} /> )
   return (
     <section className='game-status'>
       <PositionDisplay
@@ -15,32 +35,11 @@ export default function GameStatus(props) {
       />
       <section className='turn-info'>
         <ul>
-          <li>
-            <div className='label'>Turn</div>
-            <div className='datum'>{props.turnNumber}</div>
-          </li>
-          <li>
-            <div className='label'>Hints</div>
-            <div className='datum'>
-              {props.hintsUsed || 0}/{props.maxHints}
-            </div>
-          </li>
-          <li>
-            <div className='label'>Rolls</div>
-            <div className='datum'>
-              {props.successfulRolls || 0}/{props.totalRolls || 0}
-            </div>
-          </li>
-          <li>
-            <div className='label'>Skips</div>
-            <div className='datum'>
-              {props.successfulSkips || 0}/{props.totalSkips || 0}
-            </div>
-          </li>
+         {gameStausItems}
         </ul>
       </section>
       <PositionDisplay
-        label='stages'
+        label='spaces'
         totalSquares={props.stageSize}
         filledSquares={currentPosInStage}
       />

@@ -1,0 +1,6 @@
+.game-time {
+  display: flex;
+  background-color: lightgray;
+  justify-content: space-between;
+  padding: .125rem;
+}

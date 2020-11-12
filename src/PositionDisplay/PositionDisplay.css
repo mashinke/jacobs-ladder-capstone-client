@@ -1,0 +1,28 @@
+.square-container {
+  display: flex;
+  max-width: 5rem;
+  flex-direction: column-reverse;
+}
+
+.square-container > p {
+  text-align: center;
+  margin: 0;
+}
+
+.squares {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap-reverse;
+}
+
+.square {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 1px solid black;
+}
+
+.filled {
+  background-color: black;
+  color: white;
+  border-color: white
+}

@@ -12,7 +12,16 @@ const apiHelpers = {
         'content-type': 'application/json'
       },
       body: JSON.stringify(payload)
-    }) 
+    })
+  },
+  postTurn: async (payload) => {
+    await fetch(`${config.API_BASEURL}/turn`, {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify(payload)
+    })
   }
 }
 

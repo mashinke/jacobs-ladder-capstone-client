@@ -1,14 +1,15 @@
 import React from 'react';
 import AnswerInput from '../AnswerInput/AnswerInput';
+import Loading from '../Loading/Loading';
 import './QuestionCard.css';
 
 export default function QuestionCard(props) {
-  console.log(props)
   if (props.card.answers) {
-    const answerDivs = props.card.answers.map((ans, i) =>
+    const answerDivs = props.card.answers.map((answerText, i) =>
       <AnswerInput
-        answerText={ans}
+        answerText={answerText}
         onAnswerChange={props.onAnswerChange}
+        selectedAnswer={props.selectedAnswer}
         key={i}
       />)
     return (
@@ -21,8 +22,15 @@ export default function QuestionCard(props) {
           </div>
         </section>
         <div className='challenge-actions'>
-          <button>Roll</button>
-          <button>Hint</button>
+          <button type='button' onClick={() => props.onAnswerClick()}>
+            {props.onSkip ? 'Skip' : 'Roll'}
+          </button>
+          <button 
+            type='button' 
+            disabled={props.onSkip}
+            onClick={() => props.onHintClick()}>
+            Get Hint
+          </button>
           <button type='button' onClick={() => props.toggleOnSkip()} >
             {props.onSkip ? 'Roll' : 'Challenge'}
           </button>
@@ -30,5 +38,5 @@ export default function QuestionCard(props) {
       </form>
     )
   }
-  else { console.log('loading...'); return ('loading') }
+  else { <Loading label='Card' /> }
 }

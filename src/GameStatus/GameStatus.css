@@ -1,0 +1,30 @@
+.game-status {
+  display: flex;
+  justify-content: stretch;
+  padding: .25rem;
+  border: 1px solid black;
+  margin-bottom: 1rem;
+}
+
+.turn-info {
+  padding: 0 1rem;
+  flex-grow: 1;
+}
+
+.turn-info > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.turn-info > ul > li {
+  display: flex;
+  justify-content: space-between;
+  line-height: 1.2rem;
+}
+
+.turn-info > ul > li:nth-child(odd) {
+  background-color: lightgray;
+}

@@ -16,6 +16,27 @@ export default class GamePlayMain extends Component {
     this.setState({ onSkip: !this.state.onSkip })
   }
 
+  handleAnswerClick = async () => {
+    const payload = {
+      gameId: this.state.gameSettings.gameId,
+      cardId: (this.state.onSkip)
+        ? this.state.skipCard.id
+        : this.state.rollCard.id,
+      skipCard: this.state.onSkip,
+      answer: this.state.answer,
+      useHint: this.state.useHint
+    }
+    console.log(payload)
+    await apiHelpers.postTurn(payload);
+    const gameData = await apiHelpers.fetchGame();
+    await this.setState({ ...gameData, answer: '', onSkip: false, useHint: false })
+  }
+
+  handleHintClick = async () => {
+    await this.setState({ useHint: true });
+    this.handleAnswerClick();
+  }
+
   async componentDidMount() {
     // this.setState({ ...dummyStore });
     const gameData = await apiHelpers.fetchGame();
@@ -24,11 +45,8 @@ export default class GamePlayMain extends Component {
 
   render() {
     if (!this.state.gameState) {
-      console.log('GameplayMain loading...', this.state.gameState)
       return <Loading label='Game' />
     }
-
-    console.log('GameState main return', this.state)
     return (
       <main className='base game'>
         {/* <GameTime
@@ -44,6 +62,9 @@ export default class GamePlayMain extends Component {
           onAnswerChange={this.onAnswerChange}
           toggleOnSkip={this.toggleOnSkip}
           onSkip={this.state.onSkip}
+          onAnswerClick={this.handleAnswerClick}
+          selectedAnswer={this.state.answer}
+          onHintClick={this.handleHintClick}
         />
       </main>
     )

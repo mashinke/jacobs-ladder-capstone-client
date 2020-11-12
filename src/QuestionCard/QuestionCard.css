@@ -1,4 +1,36 @@
+.card {
+  border: 1px solid black;
+  padding: 2rem;
+  margin-bottom: 1rem;
+}
+
 .challenge-img {
+  width: 100%;
+  height: 10rem;
+  border: 1px solid black;
   font-size: 5rem;
   text-align: center;
+}
+
+.challenge-text {
+  text-align: center;
+}
+
+.challenge-answers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.challenge-actions {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.turn-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+.challenge-actions > button, .turn-actions > button {
+  width: 40%
 }
