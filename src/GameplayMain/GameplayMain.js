@@ -4,6 +4,7 @@ import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import apiHelpers from '../apiHelpers';
 import Loading from '../Loading/Loading';
+import TurnResultModal from '../TurnResultModal/TurnResultModal';
 
 export default class GamePlayMain extends Component {
   state = {}
@@ -26,15 +27,23 @@ export default class GamePlayMain extends Component {
       answer: this.state.answer,
       useHint: this.state.useHint
     }
-    console.log(payload)
-    await apiHelpers.postTurn(payload);
+    const turnResult = await apiHelpers.postTurn(payload);
     const gameData = await apiHelpers.fetchGame();
-    await this.setState({ ...gameData, answer: '', onSkip: false, useHint: false })
+    await this.setState({
+      ...gameData, answer: '',
+      onSkip: false,
+      useHint: false,
+      turnResult
+    })
   }
 
   handleHintClick = async () => {
     await this.setState({ useHint: true });
     this.handleAnswerClick();
+  }
+
+  handleTurnResultContinue = () => {
+    this.setState({ turnResult: undefined })
   }
 
   async componentDidMount() {
@@ -46,6 +55,12 @@ export default class GamePlayMain extends Component {
   render() {
     if (!this.state.gameState) {
       return <Loading label='Game' />
+    }
+    if (this.state.turnResult) {
+      return <TurnResultModal 
+        {...this.state.turnResult}
+        onContinue={this.handleTurnResultContinue}
+       />
     }
     return (
       <main className='base game'>

@@ -1,0 +1,7 @@
+.turnResultsModal {
+  width: 80%;
+  margin: 2rem auto;
+  padding: 5rem;
+  border: 1px solid black;
+  text-align: center;
+}
