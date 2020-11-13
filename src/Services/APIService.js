@@ -41,6 +41,8 @@ const APIService = {
     if (!response.ok) {
       const error = await response.json();
       throw error;
+    } else {
+      return response.json();
     }
   },
   postLogin: async (email, password) => {
