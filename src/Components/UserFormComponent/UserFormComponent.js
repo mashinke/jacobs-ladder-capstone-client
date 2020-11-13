@@ -27,6 +27,7 @@ export default class UserFormComponent extends FormComponent {
     return this.formFields.map(field => {
       return (
         <FormInput
+          key={field.id}
           {...field}
           value={this.state[field.id].value}
           touched={this.state[field.id].touched}

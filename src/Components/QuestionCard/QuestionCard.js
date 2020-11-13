@@ -15,22 +15,30 @@ export default function QuestionCard(props) {
     console.log(props.hintsUsed >= props.maxHints)
     console.log('hintsUsed', props.hintsUsed)
     let cardActions = [(
-      <button type='button' onClick={() => props.onAnswerClick()}>
+      <button key='answer' type='button' onClick={() => props.onAnswerClick()}>
         Answer
       </button>
     )]
+    console.log('maxHints', !props.maxHints)
     if (!props.lastTurn) {
       cardActions = [
         ...cardActions, (
           <button
+            key='hint'
             type='button'
             disabled={
-              props.onSkip || props.hintsUsed >= props.maxHints}
+              props.onSkip
+              || (
+                props.maxHints
+                && props.hintsUsed >= props.maxHints
+              )
+            }
             onClick={() => props.onHintClick()}>
             Get Hint
           </button>
         ), (
           <button
+            key='switch'
             type='button'
             onClick={() => props.toggleOnSkip()} >
             {props.onSkip ? 'Roll' : 'Challenge'}
@@ -47,7 +55,7 @@ export default function QuestionCard(props) {
           </div>
         </section>
         <div className='challenge-actions'>
-        {cardActions}
+          {cardActions}
         </div>
       </form>
     )
