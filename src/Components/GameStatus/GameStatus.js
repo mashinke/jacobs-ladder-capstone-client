@@ -4,20 +4,29 @@ import GameStatusItem from '../GameStatusItem/GameStatusItem';
 import './GameStatus.css'
 
 export default function GameStatus(props) {
-  const currentStage = Math.ceil(props.position / props.stageSize) + 1 || 1;
+  let currentStage = Math.floor(props.position / props.stageSize) + 1 || 1;
   let currentPosInStage;
-  if (currentStage > props.totalStages) currentPosInStage = props.stageSize;
-  else currentPosInStage = (props.position % props.stageSize) + 1;
+  currentPosInStage = (props.position % props.stageSize) || 'start';
+  if (currentPosInStage === 'start' && currentStage > 1) {
+    currentPosInStage = props.stageSize;
+    currentStage -= 1;
+  }
+  if (currentStage > props.totalStages) {
+    currentStage = props.totalStages;
+    currentPosInStage = props.stageSize;
+  }
+  console.log(currentPosInStage, currentStage)
   const gameStausItems = [
-    { 
+    {
       title: 'Turns',
-      number: props.turnNumber },
-    { 
+      number: props.turnNumber
+    },
+    {
       title: 'Hints',
       number: props.hintsUsed || 0,
-      total: props.maxHints 
+      total: props.maxHints
     },
-    { 
+    {
       title: 'Rolls',
       number: props.successfulRolls || 0,
       total: props.totalRolls || 0
@@ -27,7 +36,7 @@ export default function GameStatus(props) {
       number: props.successfulSkips || 0,
       total: props.totalSkips || 0
     }
-  ].map(item => <GameStatusItem {...item} /> )
+  ].map((item, i) => <GameStatusItem key={i} {...item} />)
   return (
     <section className='game-status'>
       <PositionDisplay
@@ -37,13 +46,16 @@ export default function GameStatus(props) {
       />
       <section className='turn-info'>
         <ul>
-         {gameStausItems}
+          {gameStausItems}
         </ul>
       </section>
       <PositionDisplay
         label='spaces'
         totalSquares={props.stageSize}
         filledSquares={currentPosInStage}
+        start={currentStage === 1}
+        end={currentStage === props.totalStages}
+        ended={props.ended}
       />
     </section>
   )

@@ -26,3 +26,11 @@
   color: white;
   border-color: white
 }
+
+.first {
+  width: 2.5rem;
+}
+.last {
+  min-width: 2.5rem;
+  flex-grow: 1;
+}
