@@ -42,14 +42,14 @@ export default class ScoresMain extends Component {
 }
 render() {
   return (
-    <div className='scoresMain'>
+    <main className='base'>
       <h2>Scores</h2>
       {
         !this.state.scores
           ? <Loading label='scores' />
           : <ul>{this.renderScores()}</ul>
       }
-    </div>
+    </main>
   )
 }
 }
