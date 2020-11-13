@@ -13,12 +13,10 @@ export default class UserFormComponent extends FormComponent {
   }
 
   onSubmit = (event) => {
+    console.log('prevent default')
     event.preventDefault();
     console.log(this)
-    this.handleFormSubmit()
-      .then(() =>
-        this.props.history.push('/game/setup')
-      )
+    return this.handleFormSubmit();
   }
   allowSubmit() {
     return this.formFields.reduce((r, field) => {
@@ -40,9 +38,13 @@ export default class UserFormComponent extends FormComponent {
     })
   }
   renderForm() {
+    const error = this.state.error
+      ? <p className='error'>{this.state.error.message}</p>
+      : null;
     return (
       <>
         <h2>{this.formName}</h2>
+        {error}
         <form onSubmit={event => this.onSubmit(event)}>
           {this.renderFields()}
           <button

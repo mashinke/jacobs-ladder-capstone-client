@@ -9,8 +9,10 @@ import LoginMain from '../LoginMain/LoginMain';
 import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
+import TokenService from '../Services/TokenService';
 
 class App extends Component {
+  state = { error: null, isLoggedIn: TokenService.hasAuthToken() }
   staticPaths() {
     return ['/', '/rules'].map(path => {
       return (
@@ -22,10 +24,22 @@ class App extends Component {
     })
   }
 
+  toggleLoggedIn = (token) => {
+    console.log('toggleLoggedIn')
+    TokenService.saveAuthToken(token);
+    this.props.history.push('/game/setup');
+    this.setState({ isLoggedIn: !this.state.isLoggedIn })
+  }
+
   signupPath() {
     return (
       <Route path='/signup'
-        component={SignupMain}
+        component={(props) =>
+          <SignupMain
+            {...props}
+            onLoggedIn={this.toggleLoggedIn}
+          />
+        }
       />
     )
   }
@@ -33,7 +47,12 @@ class App extends Component {
   loginPath() {
     return (
       <Route path='/login'
-        component={LoginMain}
+        component={(props) =>
+          <LoginMain
+            {...props}
+            onLoggedIn={this.toggleLoggedIn}
+          />
+        }
       />
     )
   }
@@ -59,7 +78,10 @@ class App extends Component {
     return (
       <>
         <Header />
-        <Nav />
+        <Nav
+          onLogout={this.toggleLoggedIn}
+          loggedIn={this.state.isLoggedIn}
+        />
         {this.staticPaths()}
         {this.signupPath()}
         {this.loginPath()}

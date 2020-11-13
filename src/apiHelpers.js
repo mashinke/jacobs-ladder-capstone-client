@@ -8,10 +8,15 @@ const apiHelpers = {
         'Authorization': `bearer ${TokenService.getAuthToken()}`
       }
     })
-    return await response.json();
+    if (!response.ok) {
+      const error = await response.json();
+      throw error;
+    } else {
+      return response.json();
+    }
   },
   postGame: async (payload) => {
-    await fetch(`${config.API_BASEURL}/game`, {
+    const response = await fetch(`${config.API_BASEURL}/game`, {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
@@ -19,6 +24,10 @@ const apiHelpers = {
       },
       body: JSON.stringify(payload)
     })
+    if (!response.ok) {
+      const error = await response.json();
+      throw error;
+    }
   },
   postTurn: async (payload) => {
     const response = await fetch(`${config.API_BASEURL}/turn`, {
@@ -29,19 +38,35 @@ const apiHelpers = {
       },
       body: JSON.stringify(payload)
     })
-    return response.json();
+    if (!response.ok) {
+      const error = await response.json();
+      throw error;
+    }
   },
   postLogin: async (email, password) => {
+    console.log('logging in')
     const response = await fetch(`${config.API_BASEURL}/auth`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
       body: JSON.stringify({ email, password })
     });
     if (!response.ok) {
-      const error = await response.json;
-      Promise.reject(error);
+      const error = await response.json();
+      throw error;
     } else {
       return response.json();
+    }
+  },
+  postUser: async (email, password) => {
+    console.log('signing up');
+    const response = await fetch(`${config.API_BASEURL}/user`, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      throw error;
     }
   }
 }

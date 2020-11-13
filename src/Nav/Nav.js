@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
+import TokenService from '../Services/TokenService';
 import './Nav.css';
 
-export default function Nav(props) {
-  const gameSetupNav = ['/game/setup'].map(path =>
+export default class Nav extends Component {
+  handleLogoutClick = () => {
+    TokenService.clearAuthToken()
+    this.props.onLogout();
+  }
+
+  gameSetupNav = () => ['/game/setup'].map(path =>
     <Route path={path}
       key={path}
       render={
@@ -21,7 +27,7 @@ export default function Nav(props) {
       }
     />
   )
-  const simpleNavRoutes = ['/login', '/signup', '/game/play'].map(path => {
+  authNavRoutes = () => ['/login', '/signup'].map(path => {
     return (
       <Route path={path}
         key={path}
@@ -39,8 +45,39 @@ export default function Nav(props) {
       />
     )
   })
-  const fullNavRoutes = ['/', '/rules'].map(path =>
-    (
+  gameplayNavRoute = () => ['/game/play'].map(path => {
+    return (
+      <Route path={path}
+        key={path}
+        render={
+          props => {
+            return (
+              <nav className='base'>
+                <ul className='navigation'>
+                  <li><Link to='/' className='navlink'>Home</Link></li>
+                </ul>
+              </nav>
+            )
+          }
+        }
+      />
+    )
+  })
+
+  loginLink = () => <Link to='/login' className='navlink'>Login</Link>
+  logoutLink = () => (
+    <Link
+      className="navlink"
+      onClick={this.handleLogoutClick}
+      to='/'>Logout</Link>
+  )
+  fullNavRoutes = () => ['/', '/rules'].map(path => {
+    console.log('Nav render()')
+    const authLink = this.props.loggedIn
+      ? this.logoutLink()
+      : this.loginLink()
+
+    return (
       <Route path={path}
         key={path}
         render={
@@ -50,7 +87,7 @@ export default function Nav(props) {
                 <ul className='navigation'>
                   <li><Link to='/' className='navlink'>Home</Link></li>
                   <li><Link to='/rules' className='navlink'>Rules</Link></li>
-                  <li><Link to='/login' className='navlink'>Login</Link></li>
+                  <li>{authLink}</li>
                   <li><Link to='/game/setup' className='navlink'>Play</Link></li>
                 </ul>
               </nav>
@@ -59,12 +96,15 @@ export default function Nav(props) {
         }
       />
     )
-  )
-  return (
-    <Switch>
-      {simpleNavRoutes}
-      {gameSetupNav}
-      {fullNavRoutes}
-    </Switch>
-  )
+  })
+  render() {
+    return (
+      <Switch>
+        { this.authNavRoutes()}
+        { this.gameplayNavRoute()}
+        { this.gameSetupNav()}
+        { this.fullNavRoutes()}
+      </Switch >
+    )
+  }
 }

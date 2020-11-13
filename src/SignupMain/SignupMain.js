@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import apiHelpers from '../apiHelpers';
+import TokenService from '../Services/TokenService';
 import UserFormComponent from '../UserFormComponent/UserFormComponent';
 
 export default class SignupMain extends UserFormComponent {
@@ -23,6 +25,8 @@ export default class SignupMain extends UserFormComponent {
   }
 
   formName = 'Signup';
+
+  buttonText = 'Sign up'
 
   validatePasswordTwo = () => {
     return this.state.pass.value === this.state.passTwo.value;
@@ -54,6 +58,17 @@ export default class SignupMain extends UserFormComponent {
       validateTouch: false
     }
   ]
+
+  handleFormSubmit = async () => {
+    this.setState({ error: null })
+    try {
+      await apiHelpers.postUser(this.state.email.value, this.state.pass.value);
+      const token = await apiHelpers.postLogin(this.state.email.value, this.state.pass.value);
+      this.props.onLoggedIn(token);
+    } catch(error) {
+      this.setState({ error })
+    }
+  }
 
   render() {
     return (

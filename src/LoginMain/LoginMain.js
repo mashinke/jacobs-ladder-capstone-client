@@ -28,7 +28,7 @@ export default class LoginMain extends UserFormComponent {
       validationMessage: 'Valid email required',
       label: 'Email',
       validateTouch: true,
-      type:'text'
+      type: 'text'
     },
     {
       id: 'pass',
@@ -41,11 +41,16 @@ export default class LoginMain extends UserFormComponent {
   ]
 
   handleFormSubmit = async () => {
-    const { token }= await apiHelpers.postLogin(
-      this.state.email.value,
-      this.state.pass.value
-    )
-    TokenService.saveAuthToken(token);
+    this.setState({ error: null })
+    try {
+      const { token } = await apiHelpers.postLogin(
+        this.state.email.value,
+        this.state.pass.value
+      )
+      this.props.onLoggedIn(token);
+    } catch (error) {
+      this.setState({ error })
+    }
   }
 
   render() {
