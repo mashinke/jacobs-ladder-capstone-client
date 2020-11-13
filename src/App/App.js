@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import './App.css';
 import Header from '../Header/Header';
 import Nav from '../Nav/Nav';
@@ -57,7 +57,7 @@ class App extends Component {
   render() {
     console.log('App render()')
     return (
-      <BrowserRouter>
+      <>
         <Header />
         <Nav />
         {this.staticPaths()}
@@ -65,7 +65,7 @@ class App extends Component {
         {this.loginPath()}
         {this.gameSetupPath()}
         {this.gamePlayPath()}
-      </BrowserRouter>
+      </>
     );
   }
 }
