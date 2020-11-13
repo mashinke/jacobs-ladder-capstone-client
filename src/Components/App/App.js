@@ -10,6 +10,7 @@ import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import TokenService from '../../Services/TokenService';
+import ScoresMain from '../ScoresMain/ScoresMain';
 
 class App extends Component {
   state = { error: null, isLoggedIn: TokenService.hasAuthToken() }
@@ -78,6 +79,14 @@ class App extends Component {
     )
   }
 
+  scoresPath() {
+    return (
+      <ProtectedRoute path='/game/scores'
+        component={ScoresMain}
+      />
+    )
+  }
+
   render() {
     console.log('App render()')
     return (
@@ -92,6 +101,7 @@ class App extends Component {
         {this.loginPath()}
         {this.gameSetupPath()}
         {this.gamePlayPath()}
+        {this.scoresPath()}
       </>
     );
   }

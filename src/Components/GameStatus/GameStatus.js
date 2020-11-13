@@ -1,6 +1,6 @@
 import React from 'react';
 import PositionDisplay from '../PositionDisplay/PositionDisplay';
-import GameStatusItem from '../GameStatusItem/GameStatusItem';
+import GameStatusItem from '../GameScoreItem/GameScoreItem';
 import './GameStatus.css'
 
 export default function GameStatus(props) {
@@ -16,7 +16,7 @@ export default function GameStatus(props) {
     currentPosInStage = props.stageSize;
   }
   console.log(currentPosInStage, currentStage)
-  const gameStausItems = [
+  const gameScoreItems = [
     {
       title: 'Turns',
       number: props.turnNumber
@@ -46,7 +46,7 @@ export default function GameStatus(props) {
       />
       <section className='turn-info'>
         <ul>
-          {gameStausItems}
+          {gameScoreItems}
         </ul>
       </section>
       <PositionDisplay

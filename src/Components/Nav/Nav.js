@@ -19,9 +19,15 @@ export default class Nav extends Component {
       onClick={() => this.props.onLogout()}
       to='/'>Logout</Link>
   )
+  
+  restoreGameLink = () =>
+  <Link to='/game/play' className='navlink'>Restore Game</Link>
 
   newGameLink = () =>
     <Link to='/game/setup' className='navlink'>New Game</Link>
+
+  scoresLink = () =>
+    <Link to='/game/scores' className='navlink'>Scores</Link>
 
   gameSetupNav = () => ['/game/setup'].map(path =>
     <Route path={path}
@@ -32,8 +38,8 @@ export default class Nav extends Component {
             <nav className='base'>
               <ul className='navigation'>
                 <li>{this.homeLink()}</li>
-                <li><Link to='/game/scores' className='navlink'>Scores</Link></li>
-                <li><Link to='/game/play' className='navlink'>Restore Game</Link></li>
+                <li>{this.restoreGameLink()}</li>
+                <li>{this.scoresLink}</li>
                 <li>{this.authLink()}</li>
               </ul>
             </nav>
@@ -71,6 +77,7 @@ export default class Nav extends Component {
                 <ul className='navigation'>
                   <li>{this.homeLink()}</li>
                   <li>{this.newGameLink()}</li>
+                  <li>{this.scoresLink()}</li>
                   <li>{this.authLink()}</li>
                 </ul>
               </nav>
@@ -94,8 +101,9 @@ export default class Nav extends Component {
                 <ul className='navigation'>
                   <li>{this.homeLink()}</li>
                   <li><Link to='/rules' className='navlink'>Rules</Link></li>
-                  <li>{this.authLink()}</li>
                   <li>{this.newGameLink()}</li>
+                  <li>{this.scoresLink()}</li>
+                  <li>{this.authLink()}</li>
                 </ul>
               </nav>
             )

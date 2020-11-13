@@ -70,6 +70,19 @@ const APIService = {
       const error = await response.json();
       throw error;
     }
+  },
+  fetchScores: async() => {
+    const response = await fetch(`${config.API_BASEURL}/score`, {
+      headers: {
+        'Authorization': `bearer ${TokenService.getAuthToken()}`
+      }
+    })
+    if (!response.ok) {
+      const error = await response.json();
+      throw error;
+    } else {
+      return response.json();
+    }
   }
 }
 

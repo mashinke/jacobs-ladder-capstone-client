@@ -1,11 +1,12 @@
 import React from 'react';
+import './GameScoreItem.css'
 
-export default function GameStatusItem(props) {
+export default function GameScoreItem(props) {
   return (
     <li>
       <div className='label'>{props.title}</div>
       <div className='datum'>
-        {props.number}{(props.total !== undefined) && `/${props.total}`}
+        {props.number}{(props.total) && `/${props.total}`}
       </div>
     </li>
   )
