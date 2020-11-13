@@ -1,7 +1,7 @@
-import config from './config';
-import TokenService from './Services/TokenService';
+import config from '../config';
+import TokenService from './TokenService';
 
-const apiHelpers = {
+const APIService = {
   fetchGame: async () => {
     const response = await fetch(`${config.API_BASEURL}/game`, {
       headers: {
@@ -71,4 +71,4 @@ const apiHelpers = {
   }
 }
 
-export default apiHelpers;
+export default APIService;

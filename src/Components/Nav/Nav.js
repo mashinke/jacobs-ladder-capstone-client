@@ -1,13 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Link, Switch } from 'react-router-dom';
-import TokenService from '../Services/TokenService';
 import './Nav.css';
 
 export default class Nav extends Component {
-  handleLogoutClick = () => {
-    TokenService.clearAuthToken()
-    this.props.onLogout();
-  }
 
   gameSetupNav = () => ['/game/setup'].map(path =>
     <Route path={path}
@@ -68,7 +63,7 @@ export default class Nav extends Component {
   logoutLink = () => (
     <Link
       className="navlink"
-      onClick={this.handleLogoutClick}
+      onClick={() => this.props.onLogout()}
       to='/'>Logout</Link>
   )
   fullNavRoutes = () => ['/', '/rules'].map(path => {

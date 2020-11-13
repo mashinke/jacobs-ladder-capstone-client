@@ -9,7 +9,7 @@ import LoginMain from '../LoginMain/LoginMain';
 import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
-import TokenService from '../Services/TokenService';
+import TokenService from '../../Services/TokenService';
 
 class App extends Component {
   state = { error: null, isLoggedIn: TokenService.hasAuthToken() }
@@ -24,11 +24,16 @@ class App extends Component {
     })
   }
 
-  toggleLoggedIn = (token) => {
-    console.log('toggleLoggedIn')
+  handleLogIn = (token) => {
+    console.log('toggleLoggedIn', token)
     TokenService.saveAuthToken(token);
     this.props.history.push('/game/setup');
-    this.setState({ isLoggedIn: !this.state.isLoggedIn })
+    this.setState({ isLoggedIn: true })
+  }
+
+  handleLogOut = () => {
+    TokenService.clearAuthToken();
+    this.setState({ isLoggedIn: false })
   }
 
   signupPath() {
@@ -37,7 +42,7 @@ class App extends Component {
         component={(props) =>
           <SignupMain
             {...props}
-            onLoggedIn={this.toggleLoggedIn}
+            onLoggedIn={this.handleLogIn}
           />
         }
       />
@@ -50,7 +55,7 @@ class App extends Component {
         component={(props) =>
           <LoginMain
             {...props}
-            onLoggedIn={this.toggleLoggedIn}
+            onLoggedIn={this.handleLogIn}
           />
         }
       />
@@ -79,7 +84,7 @@ class App extends Component {
       <>
         <Header />
         <Nav
-          onLogout={this.toggleLoggedIn}
+          onLogout={this.handleLogOut}
           loggedIn={this.state.isLoggedIn}
         />
         {this.staticPaths()}

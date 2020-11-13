@@ -1,5 +1,5 @@
 import React from 'react';
-import apiHelpers from '../apiHelpers';
+import APIService from '../../Services/APIService';
 import FormComponent from '../FormComponent/FormComponent';
 import FormInput from '../FormInput/FormInput';
 
@@ -43,7 +43,7 @@ export default class SetupGameMain extends FormComponent {
     } else {
       payload.hintLimit = false;
     }
-    await apiHelpers.postGame(payload);
+    await APIService.postGame(payload);
     this.props.history.push('/game/play')
   }
 
@@ -56,7 +56,7 @@ export default class SetupGameMain extends FormComponent {
   }
 
   async componentDidMount() {
-    const { gameSettings } = await apiHelpers.fetchGame();
+    const { gameSettings } = await APIService.fetchGame();
     const { totalStages, hintLimit, maxHints } = gameSettings;
     this.setState({
       totalStages: {

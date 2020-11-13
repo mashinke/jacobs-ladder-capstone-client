@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import GameTime from '../GameTime/GameTime';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
-import apiHelpers from '../apiHelpers';
+import APIService from '../../Services/APIService';
 import Loading from '../Loading/Loading';
 import TurnResultModal from '../TurnResultModal/TurnResultModal';
 import VictoryModal from '../VictoryModal/VictoryModal';
@@ -28,8 +28,8 @@ export default class GamePlayMain extends Component {
       answer: this.state.answer,
       useHint: this.state.useHint
     }
-    const turnResult = await apiHelpers.postTurn(payload);
-    const gameData = await apiHelpers.fetchGame();
+    const turnResult = await APIService.postTurn(payload);
+    const gameData = await APIService.fetchGame();
     console.log(gameData)
     await this.setState({
       ...gameData,
@@ -55,7 +55,7 @@ export default class GamePlayMain extends Component {
 
   async componentDidMount() {
     // this.setState({ ...dummyStore });
-    const gameData = await apiHelpers.fetchGame();
+    const gameData = await APIService.fetchGame();
     this.setState({
       ...gameData,
       onSkip: gameData.gameSettings.lastTurn ? true : false,

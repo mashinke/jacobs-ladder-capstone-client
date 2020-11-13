@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import apiHelpers from '../apiHelpers';
+import APIService from '../../Services/APIService';
 import UserFormComponent from '../UserFormComponent/UserFormComponent';
 
 export default class SignupMain extends UserFormComponent {
@@ -61,8 +61,8 @@ export default class SignupMain extends UserFormComponent {
   handleFormSubmit = async () => {
     this.setState({ error: null })
     try {
-      await apiHelpers.postUser(this.state.email.value, this.state.pass.value);
-      const token = await apiHelpers.postLogin(this.state.email.value, this.state.pass.value);
+      await APIService.postUser(this.state.email.value, this.state.pass.value);
+      const token = await APIService.postLogin(this.state.email.value, this.state.pass.value);
       this.props.onLoggedIn(token);
     } catch(error) {
       this.setState({ error })
