@@ -1,10 +1,15 @@
-label {
+.answerInputLabel {
   display: inline-block;
   padding: .25rem .5rem;
   height: 1.5rem;
   line-height: .75rem;
 }
-input[type="radio"]:checked+label {
+input[type="radio"].answerInputRadio:checked+label {
   border-radius: .625rem;
-  border: 1px solid #C28F20
+  border: 1px solid var(--brightgold);
+  background-color: var(--deepred);
+}
+
+.answerInputRadio {
+  display: none;
 }

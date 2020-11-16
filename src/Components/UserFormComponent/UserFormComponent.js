@@ -48,6 +48,7 @@ export default class UserFormComponent extends FormComponent {
         <form onSubmit={event => this.onSubmit(event)}>
           {this.renderFields()}
           <button
+            class='formButton'
             disabled={!this.allowSubmit()}
             type="submit">{this.buttonText}</button>
         </form>

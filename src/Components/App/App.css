@@ -1,75 +1,50 @@
 * {
   box-sizing: border-box;
-  /* font-family: sans; */
+}
+
+:root {
+  --brightgold: #c28f20;
+  --royalblue: #0b0b13;
+  --brightred: #5e080b;
+  --deepred: #36070a;
 }
 
 body {
-  background-color: #0B0B13
+  background-color: var(--royalblue)
 }
+
 .base {
   width: 90%;
   margin: auto;
 }
 
-main {
-  padding: 0 .5rem;
+main.base {
+  padding: .5rem;
+  margin-top: 1rem;
+  color: var(--brightgold);
+  font-family: 'Montserrat', sans;
 }
 
-.game {
-  padding: 0;
+h2 {
+  margin-top: 0;  
 }
 
-.play-button {
-  width: 100%;
-  height: 3rem;
+.formLink {
+  color: var(--brightgold);
 }
 
-.setup-number {
-  width: 4rem;
+button {
+  background-color: var(--deepred);
+  border: 1px solid var(--brightgold);
+  color: var(--brightgold);
+  padding: .5rem;
 }
 
-#hints {
-  border: 0;
-  padding-top: 0;
-}
-
-#hints p:first-child {
-  margin-top: 0;
+.formButton:disabled {
+  color: var(--brightred);
+  border: 1px solid var(--brightred);
 }
 
 .error {
   color: red;
-}
-
-.score-data {
-  display: flex;
-  flex-direction: column;
-}
-.score-row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.score-row > th {
-  font-weight: normal;
-}
-
-.score-row:nth-child(odd) {
-  background-color: lightgray;
-}
-
-#challenge-type {
-  padding: 0;
-  display: flex;
-  justify-content: space-around;
-  border: 0;
-  margin: .5rem 0;
-}
-
-#challenge-type > p {
-  margin: 0;
-}
-
-.email-content {
-  width: 100%;
 }

@@ -2,6 +2,10 @@ import React from 'react';
 import APIService from '../../Services/APIService';
 import FormComponent from '../FormComponent/FormComponent';
 import FormInput from '../FormInput/FormInput';
+import './SetupGameMain.css';
+
+import { IconContext } from 'react-icons';
+import { CgRadioCheck, CgRadioChecked } from 'react-icons/cg';
 
 export default class SetupGameMain extends FormComponent {
 
@@ -75,66 +79,89 @@ export default class SetupGameMain extends FormComponent {
   };
 
   render() {
+    const unlimitedSelected =
+      this.state.hintLimit.value === false
+        ? <CgRadioChecked className='radioIcon' />
+        : <CgRadioCheck className='radioIcon' />;
+    const limitedSelected =
+      this.state.hintLimit.value === true
+        ? <CgRadioChecked className='radioIcon' />
+        : <CgRadioCheck className='radioIcon' />;
     return (
-      <main>
-        <h2>Set Up Game</h2>
-        <form onSubmit={event => this.onSubmit(event)}>
-          <FormInput
-            {...this.state.totalStages}
-            label='Game Length: '
-            id='totalStages'
-            onChange={this.onFieldChange}
-            onBlur={this.onBlur}
-            className='setup-number'
-            type='number'
-            validator={this.validateGameLength}
-            validateTouch={false}
-            validationMessage='Game length must be at least 3 stages and no more than 18'
-          />
-          <p>
-            <label htmlFor='hints'>Hints</label>
-          </p>
-          <fieldset id='hints'>
+      <IconContext.Provider value={{ className: 'reactIcons' }}>
+        <main className='base static'>
+          <h2>Set Up Game</h2>
+          <form
+            className='gameSetupForm'
+            onSubmit={event => this.onSubmit(event)}>
+            <FormInput
+              {...this.state.totalStages}
+              className='numberInput'
+              label='Game Length: '
+              id='totalStages'
+              onChange={this.onFieldChange}
+              onBlur={this.onBlur}
+              type='number'
+              validator={this.validateGameLength}
+              validateTouch={false}
+              validationMessage='Game length must be at least 3 stages and no more than 18'
+            />
             <p>
-              <input
-                id='unlimited'
-                name='limitRadio'
-                type="radio"
-                onChange={e => this.onhintLimitedChange(e.target)}
-                checked={!this.state.hintLimit.value}
-              />
-              <label htmlFor='unlimited'>Unlimited</label>
+              <label htmlFor='hints'>Hints</label>
             </p>
-            <p>
-              <input
-                id='limited'
-                name='limitRadio'
-                type="radio"
-                onChange={e => this.onhintLimitedChange(e.target)}
-                checked={this.state.hintLimit.value}
-              />
-              <label htmlFor='hint-limit'>Limit to:</label>
-              <input
-                className='setup-number'
-                type="number"
-                id='hint-limit'
-                value={this.state.maxHints.value}
-                onChange={e => this.onHintLimitChange(e.target.value)}
-              />
-            </p>
-            {
-              this.state.maxHints.touched && !this.validateHintLimit() &&
-              <p className='error'>Cannot have negative hints</p>
-            }
-          </fieldset>
-          <button
-            disabled={
-              !this.validateGameLength() ||
-              !this.validateHintLimit()
-            }
-            type="submit">Start Game</button>
-        </form>
-      </main>
+            <fieldset id='hints'>
+              <p>
+                <input
+                  className='setupRadio'
+                  id='unlimited'
+                  name='limitRadio'
+                  type="radio"
+                  onChange={e => this.onhintLimitedChange(e.target)}
+                  checked={!this.state.hintLimit.value}
+                />
+                <label
+                  className='setupRadioLabel'
+                  htmlFor='unlimited'>
+                  {unlimitedSelected} Unlimited
+              </label>
+              </p>
+              <p>
+                <input
+                  className='setupRadio'
+                  id='limited'
+                  name='limitRadio'
+                  type="radio"
+                  onChange={e => this.onhintLimitedChange(e.target)}
+                  checked={this.state.hintLimit.value}
+                />
+                <label
+                  className='setupRadioLabel'
+                  htmlFor='limited'>
+                  {limitedSelected} Limit to:
+              </label>
+                <input
+                  className='numberInput'
+                  type="number"
+                  id='hint-limit'
+                  value={this.state.maxHints.value}
+                  onChange={e => this.onHintLimitChange(e.target.value)}
+                />
+              </p>
+              {
+                this.state.maxHints.touched && !this.validateHintLimit() &&
+                <p className='error'>Cannot have negative hints</p>
+              }
+            </fieldset>
+            <button
+              className='formButton'
+              disabled={
+                !this.validateGameLength() ||
+                !this.validateHintLimit()
+              }
+              type="submit">Start Game</button>
+          </form>
+        </main>
+      </IconContext.Provider >
     )
   }
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import APIService from '../../Services/APIService';
 import GameScoreItem from '../GameScoreItem/GameScoreItem';
 import Loading from '../Loading/Loading';
+import './ScoresMain.css'
 
 export default class ScoresMain extends Component {
   state = {}
@@ -15,7 +16,7 @@ export default class ScoresMain extends Component {
       return(
         <>
           <h3>Game #{i + 1}</h3>
-          <ul>{[
+          <ul className='gameScores'>{[
             {
               title: 'Turns',
               number: score.position
@@ -42,12 +43,12 @@ export default class ScoresMain extends Component {
 }
 render() {
   return (
-    <main className='base'>
+    <main className='base static'>
       <h2>Scores</h2>
       {
         !this.state.scores
           ? <Loading label='scores' />
-          : <ul>{this.renderScores()}</ul>
+          : <ul className='allScores'>{this.renderScores()}</ul>
       }
     </main>
   )

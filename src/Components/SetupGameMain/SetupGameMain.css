@@ -1,0 +1,34 @@
+.gameSetupForm {
+  padding: 0 0 0 2rem;
+}
+
+.setupRadio {
+  display: none;
+}
+
+radioIcon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.reactIcons {
+  height: .75rem;
+}
+
+.setupRadioLabel {
+  display: inline-block;
+  padding: .25rem;
+  margin: 0 .5rem;
+  height: 1.5rem;
+  line-height: .75rem;
+}
+
+
+#hints {
+  border: 0;
+  padding-top: 0;
+}
+
+#hints p:first-child {
+  margin-top: 0;
+}

@@ -1,13 +1,13 @@
 import React from 'react';
+import './FormInput.css'
 
 export default function FormInput(props) {
   return (
     <div key={props.id}>
-          <p>
+          <p className='formInput'>
             <label htmlFor={props.id}>{props.label}</label>
-          </p>
-          <p>
             <input
+              className={props.className}
               onChange={e => props.onChange(e.target)}
               onBlur={e => props.onBlur(e.target)}
               value={props.value}

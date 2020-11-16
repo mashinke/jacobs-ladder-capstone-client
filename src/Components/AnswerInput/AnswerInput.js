@@ -4,14 +4,19 @@ import './AnswerInput.css'
 export default function AnswerInput(props) {
   return (
     <p>
-      <input 
-        name='answer' 
+      <input
+        name='answer'
         type='radio'
+        className='answerInputRadio'
         id={props.answerText}
         checked={props.answerText === props.selectedAnswer}
         onChange={() => props.onAnswerChange(props.answerText)}
-        />
-      <label htmlFor={props.answerText}>{props.answerText}</label>
+      />
+      <label
+      className='answerInputLabel'
+        htmlFor={props.answerText}>
+        {props.answerText}
+      </label>
     </p>
   )
 

@@ -27,7 +27,8 @@ export default class LoginMain extends UserFormComponent {
       validationMessage: 'Valid email required',
       label: 'Email',
       validateTouch: true,
-      type: 'text'
+      type: 'text',
+      className: 'textInput'
     },
     {
       id: 'pass',
@@ -35,7 +36,8 @@ export default class LoginMain extends UserFormComponent {
       validationMessage: 'Password must be at least 8 characters',
       label: 'Password',
       validateTouch: true,
-      type: 'password'
+      type: 'password',
+      className: 'textInput'
     }
   ]
 
@@ -54,9 +56,9 @@ export default class LoginMain extends UserFormComponent {
 
   render() {
     return (
-      <main>
+      <main className='base static'>
         {this.renderForm()}
-        <p><Link to='/signup'>Sign Up</Link></p>
+        <p><Link className='formLink' to='/signup'>Sign Up</Link></p>
       </main>
     )
   }

@@ -1,26 +1,26 @@
 .game-status {
   display: flex;
   justify-content: stretch;
-  margin: 1rem 2rem;
+  margin: 1rem .5rem;
   padding: .25rem 0;
   /* border: 1px solid #ffe03370; */
-  border-top: .5rem dotted #C28F20;
-  border-bottom: .5rem dotted #c28f20;
+  border-top: .5rem dotted var(--brightgold);
+  border-bottom: .5rem dotted var(--brightgold);
   box-shadow: 
-    inset 0 .15rem 0 0 #0B0B13, 
-    inset 0 .3125rem 0 0 #c28f20,
-    inset 0 -.15rem 0 0 #0B0B13, 
-    inset 0 -.3125rem 0 0 #c28f20;
+    inset 0 .15rem 0 0 var(--royalblue), 
+    inset 0 .3125rem 0 0 var(--brightgold),
+    inset 0 -.15rem 0 0 var(--royalblue), 
+    inset 0 -.3125rem 0 0 var(--brightgold);
   
-  font-family: 'Montserrat', cursive;
+  font-family: 'Montserrat', sans;
   font-variant: small-caps;
-  font-size: 1.5rem;
-  color: #C28F20;
+  font-size: 1rem;
+  color: var(--brightgold);
 }
 
 .turn-info, .square-container {
   margin: .25rem 0;
-  background-color: #5E080B;
+  background-color: var(--brightred);
 }
 .turn-info {
   padding: 0 .25rem;

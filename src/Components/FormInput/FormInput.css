@@ -1,0 +1,20 @@
+.numberInput, .textInput {
+  background-color: var(--deepred);
+  border: 1px solid var(--brightgold);
+  padding: .25rem;
+  color: var(--brightgold);
+}
+
+.numberInput{
+  width: 1.5rem;
+}
+
+.formInput {
+  display: flex;
+  justify-content: space-between;
+}
+
+.textInput {
+  max-width: 20rem;
+  min-width: 50%;
+}

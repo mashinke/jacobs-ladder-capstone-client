@@ -4,7 +4,7 @@ import './StaticMain.css'
 
 export default function StaticMain(props) {
   const rules = (
-    <article id='rules'>
+    <article id='rules' className='staticArticle'>
       <h2>Rules</h2>
 
       <h3>The Game Board</h3>
@@ -26,7 +26,7 @@ export default function StaticMain(props) {
     </article>
   )
   const about = (
-    <article id='home'>
+    <article className='staticArticle' id='home'>
       <h2>About the Game</h2>
       <p>My daughter and I created the rules for this game in 2019 as an experiment in language learning. </p>
       <p>Jacob's Ladder is inspired by racing board games such as Snakes and Ladders and Candyland, and originally
@@ -34,7 +34,7 @@ export default function StaticMain(props) {
     </article>
   )
   return (
-    <main className='base'>
+    <main className='base static'>
       <Switch>
         <Route path='/rules'
           render={props => rules} />

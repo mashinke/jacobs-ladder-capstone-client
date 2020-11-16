@@ -6,6 +6,7 @@ import APIService from '../../Services/APIService';
 import Loading from '../Loading/Loading';
 import TurnResultModal from '../TurnResultModal/TurnResultModal';
 import VictoryModal from '../VictoryModal/VictoryModal';
+import './GameplayMain.css';
 
 export default class GamePlayMain extends Component {
   state = {}

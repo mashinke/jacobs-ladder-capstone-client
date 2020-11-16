@@ -1,0 +1,18 @@
+a.navLink {
+  color: var(--brightgold);
+  text-decoration: none;
+  font-family: 'Montserrat', sans;
+  font-variant: small-caps;
+}
+
+.navItem {
+  padding: .25rem;
+  margin: 0 .125rem 0 0;
+  background-color:  var(--brightred);
+  text-align: center;
+  border: 1px solid var(--brightgold)
+}
+
+.navItem:last-child {
+  margin-right: 0;
+}
