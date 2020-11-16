@@ -1,24 +1,50 @@
 .card {
-  border: 1px solid black;
-  padding: 2rem;
+  padding: 0 2rem;
   margin-bottom: 1rem;
+  background-color: #0B0B13;
 }
 
 .challenge-img {
+  /* color: #FFE03399; */
   width: 100%;
-  height: 10rem;
-  border: 1px solid black;
-  font-size: 5rem;
   text-align: center;
+}
+
+.challenge-img, .challenge-answers {
+  background-color: #5E080B;
+  border-top: .125rem solid #C28F20;
+  border-bottom: .125rem solid #C28F20;
+}
+
+.challenge-alt-text {
+  font-family: 'Frank Ruhl Libre', serif;
+  height: 10rem;
+  font-size: 6rem;
+  padding: 2rem 0;
+  display: inline;
+    color: #C28F20;
+    text-shadow: 
+      2px 3px 3px #5E080B, 
+      0px 0px 0px #000, 
+      2px 3px 3px #5E080B;
+}
+
+.challenge-text, .challenge-answers {
+  font-family: 'Montserrat', cursive;
+  font-variant: small-caps;
+  font-size: 1.5rem;
+  color: #C28F20;
 }
 
 .challenge-text {
   text-align: center;
+  margin: .5rem 0;
 }
 
 .challenge-answers {
   display: flex;
   justify-content: space-between;
+
 }
 
 .challenge-actions {

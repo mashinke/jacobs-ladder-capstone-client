@@ -1,8 +1,11 @@
 * {
   box-sizing: border-box;
-  font-family: sans;
+  /* font-family: sans; */
 }
 
+body {
+  background-color: #0B0B13
+}
 .base {
   width: 90%;
   margin: auto;

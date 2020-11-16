@@ -3,9 +3,9 @@
 .score-item {
   display: flex;
   justify-content: space-between;
-  line-height: 1.2rem;
+  line-height: 1.7rem;
 }
 
-.score-item:nth-child(odd) {
-  background-color: lightgray;
+.score-item:nth-child(even) {
+  background-color: #36070A;
 }

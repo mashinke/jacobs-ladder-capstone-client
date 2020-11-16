@@ -47,7 +47,7 @@ export default function QuestionCard(props) {
     }
     return (
       <form className='card'>
-        <div className='challenge-img'>{props.card.altText}</div>
+        <div className='challenge-img'><div className='challenge-alt-text'>{props.card.altText}</div></div>
         <p className='challenge-text'>{props.card.questionText}</p>
         <section className='challenge-answers'>
           <div className='column'>

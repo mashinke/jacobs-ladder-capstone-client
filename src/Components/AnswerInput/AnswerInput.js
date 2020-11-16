@@ -1,4 +1,5 @@
 import React from 'react';
+import './AnswerInput.css'
 
 export default function AnswerInput(props) {
   return (
@@ -6,10 +7,11 @@ export default function AnswerInput(props) {
       <input 
         name='answer' 
         type='radio'
+        id={props.answerText}
         checked={props.answerText === props.selectedAnswer}
         onChange={() => props.onAnswerChange(props.answerText)}
         />
-      <label>{props.answerText}</label>
+      <label htmlFor={props.answerText}>{props.answerText}</label>
     </p>
   )
 
