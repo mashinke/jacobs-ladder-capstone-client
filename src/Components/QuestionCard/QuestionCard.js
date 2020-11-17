@@ -53,9 +53,9 @@ export default function QuestionCard(props) {
     }
     return (
       <form className='card'>
-        <div className='challenge-img fancyBorder'><div className={`challenge-alt-text${props.onSkip ? ' word' : ''
+        <div className='challenge fancyBorder'><div className={`challengeAltText${props.onSkip ? ' word' : ''
           }`}>{props.card.altText}</div></div>
-        <p className='challenge-text'>{props.card.questionText}</p>
+        <p className='challengeText'>{props.card.questionText}</p>
         <ul className='challengeAnswers'>
           {answerDivs}
         </ul>

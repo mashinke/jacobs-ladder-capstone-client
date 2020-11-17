@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
+import Crown from '../Crown/Crown';
 import './Header.css';
-import crown from './crown.svg';
 
 export default function Header(props) {
   return (
@@ -16,7 +16,7 @@ export default function Header(props) {
         render={(props) => (
           <header className='base'>
             <div className='hero fancyBorder'>
-              <img className='crown' src={crown} alt='crown'/>
+              <Crown />
               <h1 className='masthead'>Jacob's Ladder</h1>
             </div>
           </header>

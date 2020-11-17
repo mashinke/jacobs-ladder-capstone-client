@@ -1,12 +1,8 @@
 import React from 'react';
+import ModalComponent from '../ModalComponent/ModalComponent';
 import './VictoryModal.css';
-export default function VictoryModal(props) {
-  return (
-    <div className='victoryModal fancyBorder'>
-      <p>You've won! Congratulations!</p>
-      <button type='button' onClick={() => props.onClickNewGame()} >
-        New Game
-    </button>
-    </div>
-  )
+export default class VictoryModal extends ModalComponent {
+  buttonText = () => 'New Game';
+  message = () => `You've won! Congratulations!`;
+  crown = true;
 }

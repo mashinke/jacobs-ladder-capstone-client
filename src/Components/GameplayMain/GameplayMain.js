@@ -76,10 +76,10 @@ export default class GamePlayMain extends Component {
       ? <TurnResultModal
         {...this.state.turnResult}
         stageSize={this.state.gameSettings.stageSize}
-        onContinue={this.handleTurnResultContinue}
+        onButtonClick={this.handleTurnResultContinue}
       />
       : this.state.gameSettings.ended
-        ? <VictoryModal onClickNewGame={this.handleNewGame} />
+        ? <VictoryModal onButtonClick={this.handleNewGame} />
         : this.state.gameSettings.lastTurn
           ? <QuestionCard
             card={this.state.skipCard}
