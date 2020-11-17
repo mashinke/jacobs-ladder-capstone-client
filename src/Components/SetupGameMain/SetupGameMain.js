@@ -52,7 +52,7 @@ export default class SetupGameMain extends FormComponent {
   }
 
   validateGameLength = () => {
-    return this.state.totalStages.value > 2 && this.state.totalStages.value < 18;
+    return this.state.totalStages.value > 2 && this.state.totalStages.value <= 18;
   }
 
   validateHintLimit = () => {
