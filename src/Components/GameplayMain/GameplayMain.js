@@ -55,8 +55,12 @@ export default class GamePlayMain extends Component {
   }
 
   async componentDidMount() {
-    // this.setState({ ...dummyStore });
     const gameData = await APIService.fetchGame();
+    console.log(gameData)
+    if(Object.keys(gameData).length === 0) {
+      // if gameData object is empty, we need to set up a new game
+      return this.props.history.push('/game/setup');
+    }
     this.setState({
       ...gameData,
       onSkip: gameData.gameSettings.lastTurn ? true : false,

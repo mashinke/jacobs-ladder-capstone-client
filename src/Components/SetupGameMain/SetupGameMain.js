@@ -61,21 +61,23 @@ export default class SetupGameMain extends FormComponent {
 
   async componentDidMount() {
     const { gameSettings } = await APIService.fetchGame();
-    const { totalStages, hintLimit, maxHints } = gameSettings;
-    this.setState({
-      totalStages: {
-        value: totalStages,
-        touched: false
-      },
-      hintLimit: {
-        value: hintLimit,
-        touched: false
-      },
-      maxHints: {
-        value: maxHints || 18,
-        touched: false
-      }
-    })
+    if (gameSettings) {
+      const { totalStages, hintLimit, maxHints } = gameSettings;
+      this.setState({
+        totalStages: {
+          value: totalStages,
+          touched: false
+        },
+        hintLimit: {
+          value: hintLimit,
+          touched: false
+        },
+        maxHints: {
+          value: maxHints || 18,
+          touched: false
+        }
+      })
+    }
   };
 
   render() {
