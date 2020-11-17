@@ -40,7 +40,7 @@ button {
   padding: .5rem;
 }
 
-.formButton:disabled {
+button:disabled {
   color: var(--brightred);
   border: 1px solid var(--brightred);
 }
