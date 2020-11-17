@@ -7,7 +7,7 @@ header{
 .crown {
   position: absolute;
   width: 4rem;
-  top: 2rem;
+  top: .5rem;
   left: calc(50vw - 2rem);
 }
 .hero {
@@ -25,7 +25,7 @@ header{
 }
 
 .masthead {
-  padding: 1rem;
+  padding: 2rem;
   margin: .875rem 0;
 }
 
@@ -34,9 +34,5 @@ header{
   font-variant: small-caps;
   margin: 0 auto;
   padding: .75rem 0;
-  border: 1px solid transparent;
-  border-image-source: url('./hero-border.svg');
-  border-image-slice: 33%;
-  border-image-repeat: space;
-  border-image-width: 2rem;
+  
 }

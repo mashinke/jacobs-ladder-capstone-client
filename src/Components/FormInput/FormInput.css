@@ -6,15 +6,20 @@
 }
 
 .numberInput{
-  width: 1.5rem;
+  width: 3rem;
 }
 
 .formInput {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
+}
+
+.formInput > label {
+  margin-right: 1rem;
 }
 
 .textInput {
-  max-width: 20rem;
+  /* max-width: 20rem; */
   min-width: 50%;
+  flex-grow: 1;
 }

@@ -9,5 +9,8 @@ nav {
   list-style: none;
   justify-content: space-between;
   margin: .5rem 0 0 0;
-  padding: .125rem;
+  padding: .125rem .25rem;
+  background-color:  var(--brightred);
+  border-top: 1px solid var(--brightgold);
+  border-bottom: 1px solid var(--brightgold);
 }

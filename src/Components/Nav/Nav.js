@@ -34,57 +34,58 @@ export default class Nav extends Component {
       ? <Link to='/game/setup' className='navLink'>New Game</Link>
       : ''
 
+  playLink = () =>
+    this.props.loggedIn
+      ? <Link to='/game/play' className='navLink'>Play</Link>
+      : ''
+
   scoresLink = () =>
     this.props.loggedIn
       ? <Link to='/game/scores' className='navLink'>Scores</Link>
       : ''
 
-  gameSetupNav = () => ['/game/setup'].map(path => {
+  gameSetupNavLinks = () => ['/game/setup'].map(path => {
     const links = [
       this.homeLink(),
       this.restoreGameLink(),
-      this.scoresLink(), 
+      this.scoresLink(),
       this.authLink()
     ].map((link, i) =>
-    link
-      ? <NavItem key={i} link={link} />
-      : '')
+      link
+        ? <NavItem key={i} link={link} />
+        : '')
     return (
       <Route path={path}
         key={path}
         render={
           props => {
             return (
-              <nav className='base'>
-                <ul className='navigation'>
-                  {links}
-                </ul>
-              </nav>
+              <ul className='navigation'>
+                {links}
+              </ul>
             )
           }
         }
       />
     )
   })
-  authNavRoutes = () => ['/login', '/signup'].map(path => {
+  authNavLinks = () => ['/login', '/signup'].map(path => {
     return (
       <Route path={path}
         key={path}
         render={
           props => {
             return (
-              <nav className='base'>
-                <ul className='navigation'>
-                  <NavItem link={this.homeLink()} />
-                </ul>
-              </nav>
+              <ul className='navigation'>
+                <NavItem link={this.homeLink()} />
+              </ul>
             )
           }
         }
       />
     )
   })
-  gameplayNavRoute = () => ['/game/play'].map(path => {
+  gameplayNavLinks = () => ['/game/play'].map(path => {
     const links = [
       this.homeLink(),
       this.newGameLink(),
@@ -100,11 +101,9 @@ export default class Nav extends Component {
         render={
           props => {
             return (
-              <nav className='base'>
-                <ul className='navigation'>
-                  {links}
-                </ul>
-              </nav>
+              <ul className='navigation'>
+                {links}
+              </ul>
             )
           }
         }
@@ -112,17 +111,16 @@ export default class Nav extends Component {
     )
   })
 
-  fullNavRoutes = () => ['/', '/rules'].map(path => {
+  staticPageNavLinks = () => ['/'].map(path => {
     console.log('Nav render()')
     const links = [
       this.homeLink(),
       this.rulesLink(),
-      this.newGameLink(),
-      this.restoreGameLink(),
+      this.playLink(),
       this.authLink()
     ].map((link, i) =>
       link
-        ? <NavItem key={i} link={link}/>
+        ? <NavItem key={i} link={link} />
         : '')
     return (
       <Route path={path}
@@ -130,11 +128,9 @@ export default class Nav extends Component {
         render={
           props => {
             return (
-              <nav className='base'>
-                <ul className='navigation'>
-                  {links}
-                </ul>
-              </nav>
+              <ul className='navigation'>
+                {links}
+              </ul>
             )
           }
         }
@@ -143,12 +139,14 @@ export default class Nav extends Component {
   })
   render() {
     return (
-      <Switch>
-        { this.authNavRoutes()}
-        { this.gameplayNavRoute()}
-        { this.gameSetupNav()}
-        { this.fullNavRoutes()}
-      </Switch >
+      <nav>
+        <Switch>
+          {this.authNavLinks()}
+          {this.gameplayNavLinks()}
+          {this.gameSetupNavLinks()}
+          {this.staticPageNavLinks()}
+        </Switch >
+      </nav>
     )
   }
 }
