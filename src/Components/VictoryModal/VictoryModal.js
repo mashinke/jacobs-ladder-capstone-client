@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './VictoryModal.css';
 export default function VictoryModal(props) {
   return (
     <div className='victoryModal'>
