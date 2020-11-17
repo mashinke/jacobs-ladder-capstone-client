@@ -15,7 +15,12 @@ export default function QuestionCard(props) {
     console.log(props.hintsUsed >= props.maxHints)
     console.log('hintsUsed', props.hintsUsed)
     let cardActions = [(
-      <button key='answer' type='button' onClick={() => props.onAnswerClick()}>
+      <button 
+        key='answer' 
+        type='button' 
+        onClick={() => props.onAnswerClick()}
+        disabled={!props.selectedAnswer}
+        >
         Answer
       </button>
     )]
