@@ -8,17 +8,17 @@
   width: 90%;
   margin: auto;
   text-align: center;
-}
-
-.challenge-img, .challenge-answers {
-  background-color: var(--brightred);
-  border-top: .125rem solid var(--brightgold);
-  border-bottom: .125rem solid var(--brightgold);
+  border: .1px solid transparent;
+  border-image-source: url('../fancy-border.svg');
+  border-image-slice: 33%;
+  border-image-repeat: space;
+  border-image-width: 7rem;
 }
 
 .challenge-alt-text {
   font-family: 'Frank Ruhl Libre', serif;
   font-size: 6rem;
+  line-height: 8rem;
   display: inline;
   color: var(--brightgold);
 }

@@ -13,13 +13,7 @@ body {
   background-color: var(--royalblue)
 }
 
-.base {
-  width: 90%;
-  margin: auto;
-}
-
 main.base {
-  padding: .5rem;
   margin-top: 1rem;
   color: var(--brightgold);
   font-family: 'Cardo', serif;

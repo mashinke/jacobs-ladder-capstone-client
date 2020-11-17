@@ -1,4 +1,5 @@
 .static {
     background-color: var(--brightred);
     border: 1px solid var(--brightgold);
+    padding: .75rem;
 }

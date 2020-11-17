@@ -1,15 +1,14 @@
 .positionDisplay {
   display: flex;
-  max-width: 7rem;
   flex-direction: column-reverse;
 }
 
 .positionDisplay:first-child {
-  padding-left: .25rem;
+  padding-left: .5rem;
 }
 
 .positionDisplay:last-child {
-  padding-right: .25rem;
+  padding-right: .5rem;
 }
 
 .positionDisplay > p {
@@ -25,6 +24,9 @@
 
 .stages {
   width: 3.75rem;
+}
+.spaces {
+  max-width: 5rem;
 }
 
 .square {

@@ -1,6 +1,7 @@
-.game {
+main.game {
   display: flex;
   flex-direction: column;
+  margin-top: 1px;
 }
 
 @media screen and (min-width: 35rem) {
