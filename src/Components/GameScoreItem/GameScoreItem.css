@@ -1,9 +1,8 @@
-
-
 .scoreItem {
   display: flex;
   justify-content: space-between;
   line-height: 1.7rem;
+  background-color: var(--brightred);
 }
 
 .scoreItem:nth-child(even) {

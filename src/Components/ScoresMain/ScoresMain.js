@@ -13,8 +13,8 @@ export default class ScoresMain extends Component {
   renderScores() {
     return this.state.scores.map((score, i) => {
       console.log(score)
-      return(
-        <>
+      return (
+        <section className='gameScore'>
           <h3>Game #{i + 1}</h3>
           <ul className='gameScores'>{[
             {
@@ -37,20 +37,22 @@ export default class ScoresMain extends Component {
               total: score.totalSkips || 0
             }
           ].map((item, i) => <GameScoreItem key={i} {...item} />)}</ul>
-        </>
+        </section>
       )
-  });
-}
-render() {
-  return (
-    <main className='base static'>
-      <h2>Scores</h2>
-      {
-        !this.state.scores
-          ? <Loading label='scores' />
-          : <ul className='allScores'>{this.renderScores()}</ul>
-      }
-    </main>
-  )
-}
+    });
+  }
+  render() {
+    return (
+      <main className='base static'>
+        <article>
+          <h2>Scores</h2>
+          {
+            !this.state.scores
+              ? <Loading label='scores' />
+              : <ul className='allScores'>{this.renderScores()}</ul>
+          }
+        </article>
+      </main>
+    )
+  }
 }

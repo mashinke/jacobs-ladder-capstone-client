@@ -1,3 +1,15 @@
-.allScores, .gameScores {
-  padding-left: .5rem;
+.allScores {
+  padding-left: 0;
+}
+.gameScore {
+  background-color: var(--brightred);
+  padding: 0 .25rem .25rem .25rem;
+}
+
+.gameScores {
+  padding: 0;
+}
+
+.gameScore h3 {
+  padding: 0;
 }

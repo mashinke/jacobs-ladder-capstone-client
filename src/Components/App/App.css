@@ -32,6 +32,8 @@ button {
   border: 1px solid var(--brightgold);
   color: var(--brightgold);
   padding: .5rem;
+  font-family: 'Montserrat', sans;
+  font-size: 1rem;
 }
 
 button:disabled {
@@ -49,4 +51,10 @@ button:disabled {
   border-image-slice: 33%;
   border-image-repeat: space;
   border-image-width: 7rem;
+}
+
+@media screen and (min-width: 35rem) {
+  html {
+    font-size: 1.5rem;
+  }
 }

@@ -13,6 +13,7 @@
 }
 
 .positionDisplay > p {
+  font-weight: bold;
   text-align: center;
   margin: 0;
 }
@@ -21,6 +22,7 @@
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
+  justify-content: center;
 }
 
 .stages {
@@ -56,11 +58,22 @@
 @media screen and (min-width: 35rem) {
   .positionDisplay {
     width: 100%;
-    padding-left: .25rem!important;
-    padding-right: .25rem!important;
+    padding: .5rem .25rem!important;
+    border-bottom: 1px solid var(--brightgold);
+    border-top: 1px solid var(--brightgold);
+    flex-direction: column;
   }
+
+  .positionDisplay:last-child {
+    border: unset;
+  }
+
   .squares, .spaces {
     width: 100%;
     max-width: unset;
+  }
+
+  .positionDisplay > p {
+    margin-bottom: .25rem;
   }
 }

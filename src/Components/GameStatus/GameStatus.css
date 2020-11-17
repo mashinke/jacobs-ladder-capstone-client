@@ -35,11 +35,14 @@
   .gameStatus {
     flex-direction: column;
     justify-content: space-between;
-    width: 25%;
+    width: 11.875rem;
     border-right: 1px solid var(--brightgold);
     border-bottom: 1px solid var(--brightgold);
     box-shadow: unset;
     padding-bottom: 0;
+  }
+  .turnInfo {
+    order: -1;
   }
   .turnInfo > ul{
     margin: auto;
