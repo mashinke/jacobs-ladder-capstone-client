@@ -65,7 +65,7 @@ export default class SignupMain extends UserFormComponent {
     this.setState({ error: null })
     try {
       await APIService.postUser(this.state.email.value, this.state.pass.value);
-      const token = await APIService.postLogin(this.state.email.value, this.state.pass.value);
+      const { token } = await APIService.postLogin(this.state.email.value, this.state.pass.value);
       this.props.onLoggedIn(token);
     } catch(error) {
       this.setState({ error })
