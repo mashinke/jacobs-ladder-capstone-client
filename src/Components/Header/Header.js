@@ -15,7 +15,7 @@ export default function Header(props) {
       <Route path='/'
         render={(props) => (
           <header className='base'>
-            <div className='hero'>
+            <div className='hero fancyBorder'>
               <img className='crown' src={crown} alt='crown'/>
               <h1 className='masthead'>Jacob's Ladder</h1>
             </div>

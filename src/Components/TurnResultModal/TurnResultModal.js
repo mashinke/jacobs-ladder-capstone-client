@@ -29,7 +29,7 @@ export default function TurnResultModal(props) {
   }
 
   return (
-    <div className='turnResultsModal'>
+    <div className='turnResultsModal fancyBorder'>
       <p>{message}</p>
       <button
         type='button'

@@ -3,7 +3,7 @@ import './AnswerInput.css'
 
 export default function AnswerInput(props) {
   return (
-    <p>
+    <li className='answerInput'>
       <input
         name='answer'
         type='radio'
@@ -17,7 +17,7 @@ export default function AnswerInput(props) {
         htmlFor={props.answerText}>
         {props.answerText}
       </label>
-    </p>
+    </li>
   )
 
 }

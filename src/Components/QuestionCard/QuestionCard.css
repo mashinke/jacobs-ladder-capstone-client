@@ -8,11 +8,6 @@
   width: 90%;
   margin: auto;
   text-align: center;
-  border: .1px solid transparent;
-  border-image-source: url('../fancy-border.svg');
-  border-image-slice: 33%;
-  border-image-repeat: space;
-  border-image-width: 7rem;
 }
 
 .challenge-alt-text {
@@ -27,7 +22,7 @@
   font-size: 4rem;
 }
 
-.challenge-text, .challenge-answers {
+.challenge-text, .challengeAnswers {
   font-family: 'Montserrat', sans;
   font-variant: small-caps;
   font-size: 1rem;
@@ -39,29 +34,35 @@
   margin: .5rem 0;
 }
 
-.challenge-answers {
+.challengeAnswers {
   display: flex;
   justify-content: space-between;
   padding: 0 1rem;
-
+  flex-direction: column;
+  list-style: none;
 }
 
-.challenge-actions {
+.turnActions {
   display: flex;
-  justify-content: space-evenly;
+  flex-direction: row-reverse;
 }
 
-.turn-actions {
-  display: flex;
-  justify-content: space-between;
+.turnActions > button {
+  min-width: 25%;
+  margin: 0 2px;
 }
 
-.challenge-actions > button, .turn-actions > button {
-  width: 40%
+.answerButton {
+  font-size: 1.25rem;
+  flex-grow: 1;
 }
 
 @media screen and (min-width: 35rem) {
   .card {
     flex-grow: 1;
+    margin: .5rem 0 0;
+  }
+  .challengeAnswers {
+    flex-direction: row;
   }
 }

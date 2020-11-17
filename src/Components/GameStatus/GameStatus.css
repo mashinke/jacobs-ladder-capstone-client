@@ -2,6 +2,7 @@
   display: flex;
   justify-content: stretch;
   padding: 0 0 .25rem 0;
+  margin-top: 1px;
   border-bottom: .5rem dotted var(--brightgold);
   border-top: 1px solid var(--brightgold);
   box-shadow:
@@ -32,7 +33,15 @@
 
 @media screen and (min-width: 35rem) {
   .gameStatus {
-    flex-grow: 2;
-    max-height: 9rem;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25%;
+    border-right: 1px solid var(--brightgold);
+    border-bottom: 1px solid var(--brightgold);
+    box-shadow: unset;
+    padding-bottom: 0;
+  }
+  .turnInfo > ul{
+    margin: auto;
   }
 }

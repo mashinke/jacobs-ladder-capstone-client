@@ -98,6 +98,7 @@ export default class GamePlayMain extends Component {
             onHintClick={this.handleHintClick}
             hintsUsed={this.state.gameState.hintsUsed}
             maxHints={this.state.gameSettings.maxHints}
+            hintLimit={this.state.gameSettings.hintLimit}
           />
 
     return (

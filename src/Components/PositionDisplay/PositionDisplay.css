@@ -1,6 +1,7 @@
 .positionDisplay {
   display: flex;
   flex-direction: column-reverse;
+  padding-top: .125rem;
 }
 
 .positionDisplay:first-child {
@@ -50,4 +51,16 @@
 .last {
   min-width: 2.5rem;
   flex-grow: 1;
+}
+
+@media screen and (min-width: 35rem) {
+  .positionDisplay {
+    width: 100%;
+    padding-left: .25rem!important;
+    padding-right: .25rem!important;
+  }
+  .squares, .spaces {
+    width: 100%;
+    max-width: unset;
+  }
 }
