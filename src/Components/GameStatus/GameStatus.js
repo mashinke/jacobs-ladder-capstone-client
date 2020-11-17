@@ -38,13 +38,13 @@ export default function GameStatus(props) {
     }
   ].map((item, i) => <GameStatusItem key={i} {...item} />)
   return (
-    <section className='game-status'>
+    <section className='gameStatus'>
       <PositionDisplay
         label='stages'
         totalSquares={props.totalStages}
         filledSquares={currentStage}
       />
-      <section className='turn-info'>
+      <section className='turnInfo'>
         <ul>
           {gameScoreItems}
         </ul>

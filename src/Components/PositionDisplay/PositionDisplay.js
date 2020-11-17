@@ -55,9 +55,9 @@ export default function PositionDisplay(props) {
     return squares;
   }
   return (
-    <section className='square-container'>
+    <section className='positionDisplay'>
       <p>{props.label}</p>
-      <div className='squares'>
+      <div className={`squares ${props.label}`}>
         {makeSquares()}
       </div>
     </section>

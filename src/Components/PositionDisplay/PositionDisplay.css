@@ -1,18 +1,18 @@
-.square-container {
+.positionDisplay {
   display: flex;
   max-width: 7rem;
   flex-direction: column-reverse;
 }
 
-.square-container:first-child {
+.positionDisplay:first-child {
   padding-left: .25rem;
 }
 
-.square-container:last-child {
+.positionDisplay:last-child {
   padding-right: .25rem;
 }
 
-.square-container > p {
+.positionDisplay > p {
   text-align: center;
   margin: 0;
 }
@@ -21,6 +21,9 @@
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap-reverse;
+}
+
+.stages {
   width: 3.75rem;
 }
 

@@ -1,4 +1,4 @@
-.game-status {
+.gameStatus {
   display: flex;
   justify-content: stretch;
   margin: 1rem .5rem;
@@ -18,19 +18,26 @@
   color: var(--brightgold);
 }
 
-.turn-info, .square-container {
+.turnInfo, .positionDisplay {
   margin: .25rem 0;
   background-color: var(--brightred);
 }
-.turn-info {
+.turnInfo {
   padding: 0 .25rem;
   flex-grow: 1;
 }
 
-.turn-info > ul {
+.turnInfo > ul {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
   flex-direction: column;
+}
+
+@media screen and (min-width: 35rem) {
+  .gameStatus {
+    flex-grow: 2;
+    max-height: 9rem;
+  }
 }
