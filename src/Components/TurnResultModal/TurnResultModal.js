@@ -38,7 +38,7 @@ export default class TurnResultModal extends Component {
     return (
       <div className='modal'>
         <FancyBorder>
-          <p>{this.message()}</p>
+          <p className='turnResultMessage'>{this.message()}</p>
           <p><button
             className='modalButton'
             type='button'

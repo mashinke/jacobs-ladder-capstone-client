@@ -109,7 +109,6 @@ button:active {
 
   .modalButton {
     position: static;
-    margin-top: 2rem;
   }
 }
 @media screen and (min-width: 65rem) {

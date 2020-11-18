@@ -1,5 +1,4 @@
-.turnResultsModal {
-  margin: 1rem 0;
-  padding: 2rem;
-  text-align: center;
+.turnResultMessage {
+  margin: 2.5rem 1rem;
+  font-size: 1.5rem;
 }
