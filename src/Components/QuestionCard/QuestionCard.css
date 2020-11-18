@@ -1,12 +1,14 @@
 .card {
   padding: 0;
-  margin: 1rem .25rem;
+  margin: 0;
   background-color: var(--royalblue);
+  flex-direction: column;
 }
 
 .challenge {
   text-align: center;
   padding: 2rem;
+  flex-grow: 1;
 }
 
 .challengeAltText {
@@ -56,15 +58,17 @@
   flex-grow: 1;
 }
 
-@media screen and (min-width: 35rem) {
-  .card {
+@media screen and (min-width: 35rem) {  .card {
     flex-grow: 1;
-    margin: .5rem 0 0;
+    width: calc(100vw - 11.875rem);
   }
-  .challengeAnswers {
-    flex-direction: row;
-  }
+
   .challenge {
     margin: 0 1rem;
+    padding: 3rem;
+  }
+
+  .challengeAnswers {
+    flex-direction: row;
   }
 }

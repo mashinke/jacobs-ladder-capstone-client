@@ -10,10 +10,17 @@
 }
 
 body {
-  background-color: var(--royalblue)
+  background-color: var(--royalblue);
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 main.base {
+  flex-grow: 1;
   margin-top: 1rem;
   color: var(--brightgold);
   font-family: 'Cardo', serif;
@@ -53,7 +60,7 @@ button:disabled {
   border-image-width: 7rem;
 }
 
-@media screen and (min-width: 35rem) {
+@media screen and (min-width: 65rem) {
   html {
     font-size: 1.5rem;
   }

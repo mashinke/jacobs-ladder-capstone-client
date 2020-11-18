@@ -31,8 +31,7 @@
   flex-direction: column;
 }
 
-@media screen and (min-width: 35rem) {
-  .gameStatus {
+@media screen and (min-width: 35rem) {  .gameStatus {
     flex-direction: column;
     justify-content: space-between;
     width: 11.875rem;

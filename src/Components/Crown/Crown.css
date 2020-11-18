@@ -8,6 +8,6 @@
 .smallCrown {
   position: absolute;
   width: 3rem;
-  top: .75rem;
+  top: 0rem;
   left: calc(50% - 1.5rem);
 }

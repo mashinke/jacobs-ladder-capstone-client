@@ -4,8 +4,7 @@ main.game {
   margin-top: 1px;
 }
 
-@media screen and (min-width: 35rem) {
-  main.game {
+@media screen and (min-width: 35rem) {  main.game {
     flex-direction: row;
   }
 }
