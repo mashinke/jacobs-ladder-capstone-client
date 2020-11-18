@@ -47,12 +47,8 @@
   color: var(--brightgold);
 }
 
-.first {
-  width: 2.5rem;
-}
-.last {
-  min-width: 2.5rem;
-  flex-grow: 1;
+.first, .last {
+  width: 100%;
 }
 
 @media screen and (min-width: 35rem) {  .positionDisplay {
