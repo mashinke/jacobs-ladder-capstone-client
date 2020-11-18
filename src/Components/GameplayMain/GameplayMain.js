@@ -105,69 +105,70 @@ export default class GamePlayMain extends Component {
             {...this.state.gameSettings}
           />
         </CSSTransition>
-        <CSSTransition
-          in={(this.modal() === 'rollCard')}
-          timeout={this.transitionTimeOut}
-          classNames='transition'
-          unmountOnExit>
-          <QuestionCard
-            card={this.state.rollCard}
-            onAnswerChange={this.onAnswerChange}
-            toggleOnSkip={this.toggleOnSkip}
-            onSkip={this.state.onSkip}
-            onAnswerClick={this.handleAnswerClick}
-            selectedAnswer={this.state.answer}
-            onHintClick={this.handleHintClick}
-            hintsUsed={this.state.gameState.hintsUsed}
-            maxHints={this.state.gameSettings.maxHints}
-            hintLimit={this.state.gameSettings.hintLimit}
-          />
-        </CSSTransition>
-        <CSSTransition
-          in={(this.modal() === 'skipCard')}
-          timeout={this.transitionTimeOut}
-          classNames='transition'
-          unmountOnExit>
-          <QuestionCard
-            card={this.state.skipCard}
-            onAnswerChange={this.onAnswerChange}
-            toggleOnSkip={this.toggleOnSkip}
-            onSkip={this.state.onSkip}
-            onAnswerClick={this.handleAnswerClick}
-            selectedAnswer={this.state.answer}
-            onHintClick={this.handleHintClick}
-            hintsUsed={this.state.gameState.hintsUsed}
-            maxHints={this.state.gameSettings.maxHints}
-            hintLimit={this.state.gameSettings.hintLimit}
-            lastTurn={this.state.gameSettings.lastTurn}
-          />
-        </CSSTransition>
-        <CSSTransition
-          in={(this.modal() === 'turnResult')}
-          timeout={this.transitionTimeOut}
-          classNames='transition'
-          unmountOnExit>
-          <TurnResultModal
-            {...this.state.turnResult}
-            stageSize={this.state.gameSettings.stageSize}
-            onButtonClick={this.handleTurnResultContinue}
-          />
-        </CSSTransition>
-        <CSSTransition
-          in={(this.modal() === 'victoryModal')}
-          timeout={this.transitionTimeOut}
-          classNames='transition'
-          unmountOnExit>
-          <VictoryModal onButtonClick={this.handleNewGame} />
-        </CSSTransition>
-        <CSSTransition
-          in={(this.modal() === 'loading')}
-          timeout={this.transitionTimeOut}
-          classNames='transition'
-          unmountOnExit>
-          <Loading label='Game' />
-        </CSSTransition>
-
+        <div className='modalWrapper'>
+          <CSSTransition
+            in={(this.modal() === 'rollCard')}
+            timeout={this.transitionTimeOut}
+            classNames='transition'
+            unmountOnExit>
+            <QuestionCard
+              card={this.state.rollCard}
+              onAnswerChange={this.onAnswerChange}
+              toggleOnSkip={this.toggleOnSkip}
+              onSkip={this.state.onSkip}
+              onAnswerClick={this.handleAnswerClick}
+              selectedAnswer={this.state.answer}
+              onHintClick={this.handleHintClick}
+              hintsUsed={this.state.gameState.hintsUsed}
+              maxHints={this.state.gameSettings.maxHints}
+              hintLimit={this.state.gameSettings.hintLimit}
+            />
+          </CSSTransition>
+          <CSSTransition
+            in={(this.modal() === 'skipCard')}
+            timeout={this.transitionTimeOut}
+            classNames='transition'
+            unmountOnExit>
+            <QuestionCard
+              card={this.state.skipCard}
+              onAnswerChange={this.onAnswerChange}
+              toggleOnSkip={this.toggleOnSkip}
+              onSkip={this.state.onSkip}
+              onAnswerClick={this.handleAnswerClick}
+              selectedAnswer={this.state.answer}
+              onHintClick={this.handleHintClick}
+              hintsUsed={this.state.gameState.hintsUsed}
+              maxHints={this.state.gameSettings.maxHints}
+              hintLimit={this.state.gameSettings.hintLimit}
+              lastTurn={this.state.gameSettings.lastTurn}
+            />
+          </CSSTransition>
+          <CSSTransition
+            in={(this.modal() === 'turnResult')}
+            timeout={this.transitionTimeOut}
+            classNames='transition'
+            unmountOnExit>
+            <TurnResultModal
+              {...this.state.turnResult}
+              stageSize={this.state.gameSettings.stageSize}
+              onButtonClick={this.handleTurnResultContinue}
+            />
+          </CSSTransition>
+          <CSSTransition
+            in={(this.modal() === 'victoryModal')}
+            timeout={this.transitionTimeOut}
+            classNames='transition'
+            unmountOnExit>
+            <VictoryModal onButtonClick={this.handleNewGame} />
+          </CSSTransition>
+          <CSSTransition
+            in={(this.modal() === 'loading')}
+            timeout={this.transitionTimeOut}
+            classNames='transition'
+            unmountOnExit>
+            <Loading label='Game' />
+          </CSSTransition>
+        </div>
       </main>
     )
   }

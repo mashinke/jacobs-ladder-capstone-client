@@ -1,8 +1,8 @@
-import React from 'react';
-import ModalComponent from '../ModalComponent/ModalComponent';
+import React, { Component } from 'react';
+import FancyBorder from '../FancyBorder/FancyBorder';
 import './TurnResultModal.css';
 
-export default class TurnResultModal extends ModalComponent {
+export default class TurnResultModal extends Component {
   buttonText = () => 'Continue';
   message = () => {
     console.log('message')
@@ -33,5 +33,20 @@ export default class TurnResultModal extends ModalComponent {
       }
     }
     return message;
+  }
+  render() {
+    return (
+      <div className='modal'>
+        <FancyBorder>
+          <p>{this.message()}</p>
+          <p><button
+            className='modalButton'
+            type='button'
+            onClick={() => this.props.onButtonClick()} >
+            {this.buttonText()}
+          </button></p>
+        </FancyBorder>
+      </div>
+    )
   }
 }

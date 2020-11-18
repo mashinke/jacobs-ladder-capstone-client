@@ -1,5 +1,6 @@
 import React from 'react';
 import AnswerInput from '../AnswerInput/AnswerInput';
+import FancyBorder from '../FancyBorder/FancyBorder';
 import Loading from '../Loading/Loading';
 import './QuestionCard.css';
 
@@ -27,22 +28,22 @@ export default function QuestionCard(props) {
     )]
     if (!props.lastTurn) {
       cardActions.unshift(
-          <button
-            key='switch'
-            type='button'
-            onClick={() => props.toggleOnSkip()} >
-            {props.onSkip ? 'Roll' : 'Challenge'}
-          </button>
-        )
+        <button
+          key='switch'
+          type='button'
+          onClick={() => props.toggleOnSkip()} >
+          {props.onSkip ? 'Roll' : 'Challenge'}
+        </button>
+      )
     }
-    if (!props.lastTurn && ( props.maxHints > 0 || !props.hintLimit)) {
+    if (!props.lastTurn && (props.maxHints > 0 || !props.hintLimit)) {
       cardActions.push(
         <button
           key='hint'
           type='button'
           disabled={
             props.onSkip
-            || ( props.hintsUsed >= props.maxHints
+            || (props.hintsUsed >= props.maxHints
               && props.hintLimit
             )
           }
@@ -52,9 +53,13 @@ export default function QuestionCard(props) {
       )
     }
     return (
-      <form className='card modalWrapper'>
-        <div className='challenge fancyBorder'><div className={`challengeAltText${props.onSkip ? ' word' : ''
-          }`}>{props.card.altText}</div></div>
+      <form className='card modal'>
+        <FancyBorder>
+          <div className='challenge'>
+            <div className={`challengeAltText${props.onSkip ? ' word' : ''
+              }`}>{props.card.altText}</div>
+          </div>
+        </FancyBorder>
         <p className='challengeText'>{props.card.questionText}</p>
         <ul className='challengeAnswers'>
           {answerDivs}

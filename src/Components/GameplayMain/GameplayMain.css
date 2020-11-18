@@ -4,6 +4,12 @@ main.game {
   margin-top: 1px;
 }
 
+.modalWrapper {
+  position: relative;
+  display: flex;
+  flex-grow: 1;
+}
+
 .transition-enter {
   opacity: 0;
 }
@@ -20,7 +26,8 @@ main.game {
   opacity: 0;
 }
 
-@media screen and (min-width: 35rem) {  main.game {
+@media screen and (min-width: 35rem) {  
+  main.game {
     flex-direction: row;
   }
 }

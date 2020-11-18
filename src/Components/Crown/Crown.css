@@ -11,3 +11,9 @@
   top: 0rem;
   left: calc(50% - 1.5rem);
 }
+
+@media screen and (min-width: 35rem) {
+  .smallCrown {
+    top: .5rem;
+  }
+}
