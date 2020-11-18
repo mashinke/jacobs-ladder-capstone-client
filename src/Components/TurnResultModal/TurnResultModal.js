@@ -17,7 +17,7 @@ export default class TurnResultModal extends Component {
             `Congratulations! You answered correctly, and rolled a ${roll}${lastTurn ? '. You are now in the final position' : ''}!`
         } else {
           message =
-            `The correct answer was ${correctAnswer}. You used a hint and rolled a ${roll}${lastTurn ? '. You are now in the final position' : ''}.`
+            `The correct answer was ‘${correctAnswer}.’ You used a hint and rolled a ${roll}${lastTurn ? '. You are now in the final position' : ''}.`
         }
       } else {
         if (skipSuccess) {
@@ -27,7 +27,7 @@ export default class TurnResultModal extends Component {
               ? 'you are now in the final position!'
               : `advanced ${stageSize} to the next stage!`}`
         } else {
-          message = `Unfortunately your answer was incorrect. The right answer was ${correctAnswer}.${lastTurn ? ' Try again!' : ''}`
+          message = `Unfortunately your answer was incorrect. The right answer was ‘${correctAnswer}.’${lastTurn ? ' Try again!' : ''}`
         }
         console.log(message)
       }

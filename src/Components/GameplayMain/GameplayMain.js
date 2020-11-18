@@ -53,12 +53,14 @@ export default class GamePlayMain extends Component {
       useHint: this.state.useHint
     }
     const turnResult = await APIService.postTurn(payload);
+    const gameData = await APIService.fetchGame();
     await this.setState({
       modal: 'turnResult',
       answer: '',
       useHint: false,
       onSkip: false,
-      turnResult
+      turnResult,
+      ...gameData
     })
   }
 
@@ -69,9 +71,7 @@ export default class GamePlayMain extends Component {
 
   handleTurnResultContinue = async () => {
     console.log('handleTurnResultContinue')
-    const gameData = await APIService.fetchGame();
     this.setState({
-      ...gameData,
       modal: 'turnStart'
     })
   }
