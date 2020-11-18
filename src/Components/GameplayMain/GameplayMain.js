@@ -118,7 +118,7 @@ export default class GamePlayMain extends Component {
               card={this.state.rollCard}
               onAnswerChange={this.onAnswerChange}
               toggleOnSkip={this.toggleOnSkip}
-              onSkip={this.state.onSkip}
+              onSkip={false}
               onAnswerClick={this.handleAnswerClick}
               selectedAnswer={this.state.answer}
               onHintClick={this.handleHintClick}
@@ -137,7 +137,7 @@ export default class GamePlayMain extends Component {
               card={this.state.skipCard}
               onAnswerChange={this.onAnswerChange}
               toggleOnSkip={this.toggleOnSkip}
-              onSkip={this.state.onSkip}
+              onSkip={true}
               onAnswerClick={this.handleAnswerClick}
               selectedAnswer={this.state.answer}
               onHintClick={this.handleHintClick}
