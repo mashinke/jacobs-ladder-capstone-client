@@ -63,11 +63,20 @@ button {
   padding: .5rem;
   font-family: 'Montserrat', sans;
   font-size: 1rem;
+  transition: background-color .35s;
+  transition: border .175s;
 }
 
 button:disabled {
   color: var(--brightred);
   border: 1px solid var(--brightred);
+  transition: background-color .35s;
+  transition: border .175s;
+}
+
+button:active {
+  background-color: var(--brightgold);
+  transition: background-color .175s;
 }
 
 .error {

@@ -18,6 +18,7 @@ export default class GamePlayMain extends Component {
   }
 
   transitionTimeOut = 350;
+  transitionDelay = 350;
 
   modal = () => {
     if (this.state.modal === 'loading')
@@ -99,6 +100,7 @@ export default class GamePlayMain extends Component {
         <CSSTransition
           in={(this.modal() === 'turnStart')}
           timeout={this.transitionTimeOut}
+          delay={this.transitionDelay}
           classNames='transition'>
           <GameStatus
             {...this.state.gameState}
@@ -109,6 +111,7 @@ export default class GamePlayMain extends Component {
           <CSSTransition
             in={(this.modal() === 'rollCard')}
             timeout={this.transitionTimeOut}
+            delay={this.transitionDelay}
             classNames='transition'
             unmountOnExit>
             <QuestionCard
@@ -127,6 +130,7 @@ export default class GamePlayMain extends Component {
           <CSSTransition
             in={(this.modal() === 'skipCard')}
             timeout={this.transitionTimeOut}
+            delay={this.transitionDelay}
             classNames='transition'
             unmountOnExit>
             <QuestionCard
@@ -146,6 +150,7 @@ export default class GamePlayMain extends Component {
           <CSSTransition
             in={(this.modal() === 'turnResult')}
             timeout={this.transitionTimeOut}
+            delay={this.transitionDelay}
             classNames='transition'
             unmountOnExit>
             <TurnResultModal
@@ -157,6 +162,7 @@ export default class GamePlayMain extends Component {
           <CSSTransition
             in={(this.modal() === 'victoryModal')}
             timeout={this.transitionTimeOut}
+            delay={this.transitionDelay}
             classNames='transition'
             unmountOnExit>
             <VictoryModal onButtonClick={this.handleNewGame} />
@@ -164,6 +170,7 @@ export default class GamePlayMain extends Component {
           <CSSTransition
             in={(this.modal() === 'loading')}
             timeout={this.transitionTimeOut}
+            delay={this.transitionDelay}
             classNames='transition'
             unmountOnExit>
             <Loading label='Game' />
