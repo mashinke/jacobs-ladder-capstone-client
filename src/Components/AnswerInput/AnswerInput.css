@@ -1,18 +1,15 @@
 .answerInputLabel {
+  border-radius: .625rem;
+  border: 1px solid transparent;
   display: inline-block;
   padding: .25rem .5rem .375rem .375rem;
   font-size: 1.25rem;
-  margin: 1px;
-  transition: background-color .35s;
-  transition: border .175s;
 }
 input[type="radio"].answerInputRadio:checked+label {
   border-radius: .625rem;
   border: 1px solid var(--brightgold);
-  margin: 0;
   background-color: var(--deepred);
-  transition: background-color .35s;
-  transition: border .175s;
+  transition: all .635s;
 }
 
 .answerInputRadio {
