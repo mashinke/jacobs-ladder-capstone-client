@@ -7,3 +7,9 @@
   padding: 3rem 2rem;
   flex-grow: 1;
 }
+
+@media screen and (min-width: 65rem) {
+  .fancyBorder {
+    padding: 2rem;
+  }
+}
