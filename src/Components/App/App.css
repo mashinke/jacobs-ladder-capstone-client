@@ -26,6 +26,23 @@ main.base {
   font-family: 'Cardo', serif;
 }
 
+fade-enter {
+  opacity: 0;
+}
+
+fade-enter-active {
+  opacity: 100;
+  transition: opacity 300ms;
+}
+
+fade-exit {
+
+}
+
+fade-exit-active {
+
+}
+
 h2 {
   margin-top: 0;  
 }

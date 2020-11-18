@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 // import GameTime from '../GameTime/GameTime';
+import { CSSTransition } from 'react-transition-group';
 import GameStatus from '../GameStatus/GameStatus';
 import QuestionCard from '../QuestionCard/QuestionCard';
 import APIService from '../../Services/APIService';
@@ -10,6 +11,20 @@ import './GameplayMain.css';
 
 export default class GamePlayMain extends Component {
   state = {}
+
+  modal = () => {
+    if (!this.state.gameSettings)
+      return 'loading';
+    else if (this.state.turnResult)
+      return 'turnResult';
+    else if (this.state.gameSettings.ended)
+      return 'victoryModal';
+    else if (this.state.gameSettings.lastTurn)
+      return 'skipCard';
+    else if (this.state.onSkip)
+      return 'skipCard';
+    else return 'rollCard';
+  }
 
   onAnswerChange = (answer) => {
     this.setState({ answer });
@@ -47,7 +62,7 @@ export default class GamePlayMain extends Component {
   }
 
   handleTurnResultContinue = () => {
-    this.setState({ turnResult: undefined })
+    this.setState({ turnResult: false })
   }
 
   handleNewGame = () => {
@@ -57,7 +72,7 @@ export default class GamePlayMain extends Component {
   async componentDidMount() {
     const gameData = await APIService.fetchGame();
     console.log(gameData)
-    if(Object.keys(gameData).length === 0) {
+    if (Object.keys(gameData).length === 0) {
       // if gameData object is empty, we need to set up a new game
       return this.props.history.push('/game/setup');
     }
@@ -68,50 +83,81 @@ export default class GamePlayMain extends Component {
   }
 
   render() {
-    if (!this.state.gameSettings) {
-      return <Loading label='Game' />
-    }
-
-    const modal = this.state.turnResult
-      ? <TurnResultModal
-        {...this.state.turnResult}
-        stageSize={this.state.gameSettings.stageSize}
-        onButtonClick={this.handleTurnResultContinue}
-      />
-      : this.state.gameSettings.ended
-        ? <VictoryModal onButtonClick={this.handleNewGame} />
-        : this.state.gameSettings.lastTurn
-          ? <QuestionCard
-            card={this.state.skipCard}
-            onAnswerChange={this.onAnswerChange}
-            onAnswerClick={this.handleAnswerClick}
-            selectedAnswer={this.state.answer}
-            lastTurn={true}
-          />
-          : <QuestionCard
-            card={this.state.onSkip ? this.state.skipCard : this.state.rollCard}
-            onAnswerChange={this.onAnswerChange}
-            toggleOnSkip={this.toggleOnSkip}
-            onSkip={this.state.onSkip}
-            onAnswerClick={this.handleAnswerClick}
-            selectedAnswer={this.state.answer}
-            onHintClick={this.handleHintClick}
-            hintsUsed={this.state.gameState.hintsUsed}
-            maxHints={this.state.gameSettings.maxHints}
-            hintLimit={this.state.gameSettings.hintLimit}
-          />
-
+    console.log('modal', this.modal())
+    console.log('gameSettings', !this.state.gameSettings)
     return (
       <main className='base game'>
-        {/* <GameTime // not yet implemented
-          time={this.state.timeElapsed} /> */}
+        {
+          this.modal() !== 'loading'
+            ? <>
+              <CSSTransition
+                in={(this.modal() !== 'loading')}
+                timeout={2000}
+                classNames='transition'>
+                <GameStatus
+                  {...this.state.gameState}
+                  {...this.state.gameSettings}
+                />
+              </CSSTransition>
+              <CSSTransition
+                in={(this.modal() === 'rollCard')}
+                timeout={2000}
+                classNames='transition'
+                unmountOnExit>
+                <QuestionCard
+                  card={this.state.rollCard}
+                  onAnswerChange={this.onAnswerChange}
+                  toggleOnSkip={this.toggleOnSkip}
+                  onSkip={this.state.onSkip}
+                  onAnswerClick={this.handleAnswerClick}
+                  selectedAnswer={this.state.answer}
+                  onHintClick={this.handleHintClick}
+                  hintsUsed={this.state.gameState.hintsUsed}
+                  maxHints={this.state.gameSettings.maxHints}
+                  hintLimit={this.state.gameSettings.hintLimit}
+                />
+              </CSSTransition>
+              <CSSTransition
+                in={(this.modal() === 'skipCard')}
+                timeout={2000}
+                classNames='transition'
+                unmountOnExit>
+                <QuestionCard
+                  card={this.state.skipCard}
+                  onAnswerChange={this.onAnswerChange}
+                  onAnswerClick={this.handleAnswerClick}
+                  selectedAnswer={this.state.answer}
+                  lastTurn={true}
+                />
+              </CSSTransition>
+              <CSSTransition
+                in={(this.modal() === 'turnResult')}
+                timeout={5000}
+                classNames='transition'
+                unmountOnExit>
+                <TurnResultModal
+                  {...this.state.turnResult}
+                  stageSize={this.state.gameSettings.stageSize}
+                  onButtonClick={this.handleTurnResultContinue}
+                />
+              </CSSTransition>
+              <CSSTransition
+                in={(this.modal() === 'victoryModal')}
+                timeout={2000}
+                classNames='transition'
+                unmountOnExit>
+                <VictoryModal onButtonClick={this.handleNewGame} />
+              </CSSTransition>
+            </>
+            : <CSSTransition
+              in={(this.modal() === 'loading')}
+              timeout={2000}
+              classNames='transition'
+              unmountOnExit>
+              <Loading label='Game' />
+            </CSSTransition>
+        }
 
-        <GameStatus
-          {...this.state.gameState}
-          {...this.state.gameSettings}
-        />
-
-        { modal}
       </main>
     )
   }

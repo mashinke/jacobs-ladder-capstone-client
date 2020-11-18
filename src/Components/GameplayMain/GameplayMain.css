@@ -4,6 +4,22 @@ main.game {
   margin-top: 1px;
 }
 
+.transition-enter {
+  opacity: 0;
+}
+
+.transition-enter-active {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 100;
+}
+
+.transition-exit-active {
+  transition-property: opacity;
+  transition-duration: 2s;
+  opacity: 0;
+}
+
 @media screen and (min-width: 35rem) {  main.game {
     flex-direction: row;
   }
