@@ -24,6 +24,7 @@ main.base {
   margin-top: 1rem;
   color: var(--brightgold);
   font-family: 'Cardo', serif;
+  position: relative;
 }
 
 fade-enter {

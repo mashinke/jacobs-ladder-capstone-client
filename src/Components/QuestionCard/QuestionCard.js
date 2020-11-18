@@ -52,7 +52,7 @@ export default function QuestionCard(props) {
       )
     }
     return (
-      <form className='card'>
+      <form className='card modalWrapper'>
         <div className='challenge fancyBorder'><div className={`challengeAltText${props.onSkip ? ' word' : ''
           }`}>{props.card.altText}</div></div>
         <p className='challengeText'>{props.card.questionText}</p>

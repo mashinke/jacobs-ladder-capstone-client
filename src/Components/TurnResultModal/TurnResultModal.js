@@ -6,7 +6,7 @@ export default class TurnResultModal extends ModalComponent {
   buttonText = () => 'Continue';
   message = () => {
     console.log('message')
-    const { roll, correctAnswer, useHint, skipSuccess, onContinue, stageSize, gameWon, lastTurn } = this.props;
+    const { roll, correctAnswer, useHint, skipSuccess, stageSize, gameWon, lastTurn } = this.props;
     let message;
     if (gameWon) {
       message = 'Congratulations! You answered correctly and won the game!'

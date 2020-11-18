@@ -4,6 +4,7 @@ import GameStatusItem from '../GameScoreItem/GameScoreItem';
 import './GameStatus.css'
 
 export default function GameStatus(props) {
+  console.log('GameStatus rendering')
   let currentStage = Math.floor(props.position / props.stageSize) + 1 || 1;
   let currentPosInStage;
   currentPosInStage = (props.position % props.stageSize) || 'start';

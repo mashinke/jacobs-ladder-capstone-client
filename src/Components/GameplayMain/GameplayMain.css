@@ -10,13 +10,13 @@ main.game {
 
 .transition-enter-active {
   transition-property: opacity;
-  transition-duration: 2s;
+  transition-duration: .35s;
   opacity: 100;
 }
 
 .transition-exit-active {
   transition-property: opacity;
-  transition-duration: 2s;
+  transition-duration: .35s;
   opacity: 0;
 }
 

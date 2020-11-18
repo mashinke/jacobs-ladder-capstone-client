@@ -1,7 +1,4 @@
 .card {
-  padding: 0;
-  margin: 0;
-  background-color: var(--royalblue);
   flex-direction: column;
 }
 

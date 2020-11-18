@@ -1,5 +1,7 @@
 .modalWrapper {
-  position: relative;
+  position: absolute;
+  top: 0;
+  right: 0;
   padding: 0;
   margin: 1rem 0;
   flex-grow: 1;
