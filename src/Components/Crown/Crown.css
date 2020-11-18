@@ -2,7 +2,7 @@
   position: absolute;
   width: 4rem;
   top: .5rem;
-  left: calc(50% - 2rem);
+  left: calc(50vw - 2rem);
 }
 
 .smallCrown {

@@ -5,7 +5,8 @@ header{
 }
 
 .hero {
-  width: 100%;
+  width: 95%;
+  margin: auto;
   height: 12rem;
   border: 1px solid transparent;
   border-image-source: url('../fancy-border.svg');
@@ -28,5 +29,6 @@ header{
   font-variant: small-caps;
   margin: 0 auto;
   padding: .75rem 0;
+  height: 4rem;
   
 }
