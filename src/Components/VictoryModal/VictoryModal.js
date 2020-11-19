@@ -5,7 +5,7 @@ export default function VictoryModal(props) {
   return (
     <div className='modal'>
       <FancyBorder crown={true}>
-        <p>You've won! Congratulations!</p>
+        <p className='victoryMessage'>You've won! Congratulations!</p>
         <p><button
           className='modalButton'
           type='button'
