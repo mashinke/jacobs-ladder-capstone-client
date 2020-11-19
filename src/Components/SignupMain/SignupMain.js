@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
 import APIService from '../../Services/APIService';
 import UserFormComponent from '../UserFormComponent/UserFormComponent';
 
@@ -67,17 +68,19 @@ export default class SignupMain extends UserFormComponent {
       await APIService.postUser(this.state.email.value, this.state.pass.value);
       const { token } = await APIService.postLogin(this.state.email.value, this.state.pass.value);
       this.props.onLoggedIn(token);
-    } catch(error) {
+    } catch (error) {
       this.setState({ error })
     }
   }
 
   render() {
     return (
-      <main className='base static'>
-        {this.renderForm()}
-        <p><Link className='formLink' to='/login'>Log In</Link></p>
-      </main>
+      <PublicOnlyRoute>
+        <main className='base static'>
+          {this.renderForm()}
+          <p><Link className='formLink' to='/login'>Log In</Link></p>
+        </main>
+      </PublicOnlyRoute>
     )
 
   }

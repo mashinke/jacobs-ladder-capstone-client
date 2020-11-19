@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PublicOnlyRoute from '../PublicOnlyRoute/PublicOnlyRoute'
 import APIService from '../../Services/APIService';
 import UserFormComponent from '../UserFormComponent/UserFormComponent';
 
@@ -56,10 +57,12 @@ export default class LoginMain extends UserFormComponent {
 
   render() {
     return (
-      <main className='base static'>
-        {this.renderForm()}
-        <p><Link className='formLink' to='/signup'>Sign Up</Link></p>
-      </main>
+      <PublicOnlyRoute>
+        <main className='base static'>
+          {this.renderForm()}
+          <p><Link className='formLink' to='/signup'>Sign Up</Link></p>
+        </main>
+      </PublicOnlyRoute>
     )
   }
 }
