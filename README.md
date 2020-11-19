@@ -1,77 +1,56 @@
-# Capstone Project Title (to do now)
-One line description of what this app is doing and who is it for
+# Jacob's Ladder - RESTful API client
 
-## 1. Working Prototype (to do later)
-(Example) You can access a working prototype of the React app here: https://your-app-client.herokuapp.com/ and Node app here: https://your-app-server.herokuapp.com/
+## About the Game
+My daughter and I created the rules for this game in 2019 as an experiment in 
+language learning.
 
+Jacob's Ladder is inspired by racing board games such as Snakes and Ladders and
+Candyland, and originally conceived as a board game.
 
-## 2. User Stories (to do now)
-This app is for two types of users: a visitor and a logged-in user
-
-#### (Example) Landing Page
-* as a visitor
-* I want to understand what I can do with this app (or sign up, or log in)
-* so I can decide if I want to use it
+This is the repository for the RESTful client. To see the server code and learn
+about the API, please visit the 
+[server repository on GitHub](https://github.com/mashinke/jacobs-ladder-server).
 
 
-## 3. Functionality (to do now)
-The app's functionality includes:
-* (Example) Every User has the ability to create an account
+## Rules
 
-## 4. Technology (done)
-* Front-End: HTML5, CSS3, JavaScript ES6, React
-* Back-End: Node.js, Express.js, Mocha, Chai, RESTful API Endpoints, Postgres
-* Development Environment: Heroku, DBeaver
+The rules of the game are simple.
 
-### 5. Wireframes (to do now)
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/wireframes/landing-page-wireframe.png)
-Register Page
-![Register Page](/github-images/wireframes/register-page-wireframe.png)
+### The Game Board
 
-## 6. Front-end Structure - React Components Map (to do later)
-* (Example) __Index.js__ (stateless)
-    * __App.js__ (stateful)
-        * __LandingPage.js__ (stateful) - gets the _"prop name"_ and the _"callback prop name"_ from the __App.js__
-            * __Login.js__ (stateful) -
-            * __Register.js__ (stateful) -
-        * __Navbar.js__ (stateless) -
+The game board has a number of spaces that are divided into stages. The player
+begins as Jacob asleep in the desert, and uses the power of knowledge and Torah
+to ascend to the heavens.
 
-## 7. Back-end Structure - Business Objects (to do later)
-* (Example) Users (database table)
-    * id (auto-generated)
-    * username (email validation)
-    * password (at least 8 chars, at least one alpha and a special character validation)
+### Challenge Cards
 
+The challege cards are divided into two categories: roll cards and skip cards
+(see more on those below). 
+In the first difficulty level, roll cards consist of the letters of the Alef 
+Beys which the player must correctly identify to advance.
 
-## 8. API Documentation (to do later)
-API Documentation details:
-* (Example) get all users
+Skip cards consist of vocabulary words that the player must translate.
 
+### Dice
 
+The game has one virtual ten-sided die, that is cast once per turn.
 
-## Screenshots (to do later)
-(Example) Landing Page
-:-------------------------:
-![Landing Page](/github-images/screenshots/landing-page-screenshot.png)
-Register Page
-![Register Page](/github-images/screenshots/register-page-screenshot.png)
+### Gameplay
 
-## Development Roadmap (to do later)
-This is v1.0 of the app, but future enhancements are expected to include:
-* (Example) add more functionality
+Each turn, the player may take a roll card with a question. If they answer the
+question correctly, they can cast the die and move the number of spaces 
+indicated by the die. If they answer incorrectly, they lose the turn.
 
-## How to run it (done)
-Use command line to navigate into the project folder and run the following in terminal
+Alternately, the player may choose to take a skip card. If they answer it 
+correctly, they advance the number of spaces in a stage. If they answer 
+incorrectly, they lose the turn and can no longer chose a skip card until
+they advance another stage.
 
-### Local React scripts
-* To install the react project ===> npm install
-* To run react (on port 3000) ===> npm start
-* To run tests ===> npm run test
+### End game
 
-### Local Node scripts
-* To install the node project ===> npm install
-* To migrate the database ===> npm run migrate -- 1
-* To run Node server (on port 8000) ===> npm run dev
-* To run tests ===> npm run test
+When the player reaches the end of the last stage, they must correctly answer
+a skip card to finish the game. If they answer incorrectly, they must try again
+on their next turn. The player will remain on the last space on the last stage
+until they correctly answer a skip card.
+
+Any player who answers the final card correctly wins the game.
