@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   margin-top: calc(-1rem + 1px);
+  min-height: calc(100vh - 7.875rem)
 }
 
 .path-enter-active > .game {
@@ -33,5 +34,6 @@
 @media screen and (min-width: 35rem) {  
   .game {
     flex-direction: row;
+    min-height: calc(100vh - 7.5rem);
   }
 }
