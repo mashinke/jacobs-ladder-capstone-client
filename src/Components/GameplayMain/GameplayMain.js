@@ -96,7 +96,7 @@ export default class GamePlayMain extends Component {
   render() {
     console.log('GameMain rendering');
     return (
-      <main className='base game'>
+      <div className='game'>
         <CSSTransition
           in={(this.modal() === 'turnStart')}
           timeout={this.transitionTimeOut}
@@ -176,7 +176,7 @@ export default class GamePlayMain extends Component {
             <Loading label='Game' />
           </CSSTransition>
         </div>
-      </main>
+      </div>
     )
   }
 }

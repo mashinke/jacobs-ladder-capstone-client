@@ -10,7 +10,7 @@
 }
 
 html {
-  overflow: auto;
+  overflow-x: hidden;
   margin-right: calc(100% - 100vw);
   margin-left: 0
 }
@@ -33,21 +33,28 @@ main.base {
   position: relative;
 }
 
-fade-enter {
-  opacity: 0;
+.path-enter {
+  position: absolute;
+  left: 100vw;
+  width: 100%;
 }
 
-fade-enter-active {
-  opacity: 100;
-  transition: opacity 300ms;
+.path-enter-active {
+  position: absolute;
+  left: 0;
+  transition: all 1s;
 }
 
-fade-exit {
-
+.path-exit {
+  position: absolute;
+  right: 0;
+  width: 100%;
 }
 
-fade-exit-active {
-
+.path-exit-active {
+  position: absolute;
+  right: 100vw;
+  transition: all 1s;
 }
 
 h1 {
@@ -56,6 +63,15 @@ h1 {
 
 h2 {
   margin-top: 0;
+}
+
+.static {
+  padding: .75rem;
+}
+
+article h1, article h2, article h3 {
+  background-color: var(--brightred);
+  padding: 0 .25rem
 }
 
 .formLink {

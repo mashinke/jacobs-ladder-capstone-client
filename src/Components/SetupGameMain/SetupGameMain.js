@@ -91,7 +91,7 @@ export default class SetupGameMain extends FormComponent {
         : <CgRadioCheck className='radioIcon' />;
     return (
       <IconContext.Provider value={{ className: 'reactIcons' }}>
-        <main className='base static'>
+        <div className='static'>
           <h2>Set Up Game</h2>
           <form
             className='gameSetupForm'
@@ -162,7 +162,7 @@ export default class SetupGameMain extends FormComponent {
               }
               type="submit">Start Game</button>
           </form>
-        </main>
+        </div>
       </IconContext.Provider >
     )
   }

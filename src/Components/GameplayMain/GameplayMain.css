@@ -1,7 +1,11 @@
-main.game {
+.game {
   display: flex;
   flex-direction: column;
-  margin-top: 1px;
+  margin-top: calc(-1rem + 1px);
+}
+
+.path-enter-active > .game {
+  left: -.75rem;
 }
 
 .modalWrapper {
@@ -27,7 +31,7 @@ main.game {
 }
 
 @media screen and (min-width: 35rem) {  
-  main.game {
+  .game {
     flex-direction: row;
   }
 }

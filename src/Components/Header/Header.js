@@ -28,10 +28,10 @@ export default function Header(props) {
             classNames='big-header'
             unmountOnExit
             onExit={() => {
-              document.querySelector('html').style.overflow = 'hidden';
+              document.querySelector('html').style.overflowY = 'hidden';
             }}
             onExited={() => {
-              document.querySelector('html').style.overflow = 'auto';
+              document.querySelector('html').style.overflowY = 'auto';
             }} >
             <div className='hero fancyBorder'>
               <Crown />

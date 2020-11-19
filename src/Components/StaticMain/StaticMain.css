@@ -1,8 +1,0 @@
-.static {
-    padding: .75rem;
-}
-
-article h1, article h2, article h3 {
-    background-color: var(--brightred);
-    padding: 0 .25rem
-}

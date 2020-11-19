@@ -43,16 +43,14 @@ export default class ScoresMain extends Component {
   }
   render() {
     return (
-      <main className='base static'>
-        <article>
-          <h2>Scores</h2>
-          {
-            !this.state.scores
-              ? <Loading label='scores' />
-              : <ul className='allScores'>{this.renderScores()}</ul>
-          }
-        </article>
-      </main>
+      <article class='static'>
+        <h2>Scores</h2>
+        {
+          !this.state.scores
+            ? <Loading label='scores' />
+            : <ul className='allScores'>{this.renderScores()}</ul>
+        }
+      </article>
     )
   }
 }
