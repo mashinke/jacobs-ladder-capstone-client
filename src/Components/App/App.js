@@ -32,7 +32,7 @@ class App extends Component {
     const routes = [
       {
         path: '/',
-        jsx: (
+        jsx: props => (
           <article className='static' id='home'>
             <h2>About the Game</h2>
             <p>My daughter and I created the rules for this game in 2019 as an experiment in language learning. </p>
@@ -43,7 +43,7 @@ class App extends Component {
       },
       {
         path: '/rules',
-        jsx: (
+        jsx: props => (
           <article id='rules' className='static'>
             <h2>Rules</h2>
 
@@ -86,20 +86,26 @@ class App extends Component {
       },
       {
         path: '/game/scores',
-        jsx: (
-          <ScoresMain />
+        jsx: props => (
+          <ScoresMain
+            {...props}
+          />
         )
       },
       {
         path: '/game/setup',
-        jsx: (
-          <SetupGameMain />
+        jsx: props => (
+          <SetupGameMain
+            {...props}
+          />
         )
       },
       {
         path: '/game/play',
-        jsx: (
-            <GamePlayMain />
+        jsx: props => (
+          <GamePlayMain
+            {...props}
+          />
         )
       }
     ].map(route => (
@@ -107,9 +113,9 @@ class App extends Component {
         path={route.path}
         key={route.path}
       >
-        {({ match }) => (
+        {(props) => (
           <CSSTransition
-            in={(match !== null)}
+            in={(props.match !== null)}
             timeout={1000}
             classNames={classNames}
             unmountOnExit
@@ -120,7 +126,7 @@ class App extends Component {
               document.querySelector('html').style.overflowY = 'auto';
             }}
           >
-            {route.jsx}
+            {route.jsx(props)}
           </CSSTransition>
         )}
       </Route>

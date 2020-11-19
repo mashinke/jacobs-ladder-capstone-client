@@ -97,7 +97,7 @@ export default class GamePlayMain extends Component {
   render() {
     console.log('GameMain rendering');
     return (
-      <ProtectedRoute location={this.props.location}>
+      <ProtectedRoute >
         <div className='game'>
           <CSSTransition
             in={(this.modal() === 'turnStart')}
