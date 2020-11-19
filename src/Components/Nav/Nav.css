@@ -3,6 +3,7 @@ nav {
   top: 0;
   background: var(--royalblue);
   z-index: 1;
+  height: 2.5rem;
 }
 
 .navigation {
