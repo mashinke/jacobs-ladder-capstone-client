@@ -1,27 +1,46 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import Crown from '../Crown/Crown';
 import './Header.css';
 
 export default function Header(props) {
   return (
-    <Switch>
-      <Route path='/game'
-        render={(props) => (
-          <header className='base'>
-            <h1 className='small-masthead'>Jacob's Ladder</h1>
-          </header>
-        )} />
-      <Route path='/'
-        render={(props) => (
-          <header className='base'>
+    <header className='base'>
+      <Route path='/game'>
+        {({ match }) => (
+          <CSSTransition
+            in={(match !== null)}
+            timeout={1000}
+            classNames='small-header'
+            unmountOnExit >
+            <div>
+              <h1 className='small-masthead'>Jacob's Ladder</h1>
+            </div>
+          </CSSTransition>
+        )}
+      </Route>
+      <Route exact path={'/(|rules|signup|login)'}>
+        {({ match }) => (
+          <CSSTransition
+            in={(match !== null)}
+            timeout={1000}
+            classNames='big-header'
+            unmountOnExit
+            onExit={() => {
+              document.querySelector('html').style.overflow = 'hidden';
+            }}
+            onExited={() => {
+              document.querySelector('html').style.overflow = 'auto';
+            }} >
             <div className='hero fancyBorder'>
               <Crown />
               <h1 className='masthead'>Jacob's Ladder</h1>
             </div>
-          </header>
-        )} />
-    </Switch>
+          </CSSTransition>
+        )}
+      </Route>
+    </header>
   )
 
 }
