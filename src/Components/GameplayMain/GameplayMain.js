@@ -55,13 +55,16 @@ export default class GamePlayMain extends Component {
     }
     const turnResult = await APIService.postTurn(payload);
     const gameData = await APIService.fetchGame();
+    const { rollCard, skipCard, gameSettings, gameState } = gameData;
     await this.setState({
       modal: 'turnResult',
       answer: '',
       useHint: false,
       onSkip: false,
       turnResult,
-      ...gameData
+      gameSettings,
+      gameState,
+      nextTurnCards: { rollCard, skipCard },
     })
   }
 
@@ -72,8 +75,12 @@ export default class GamePlayMain extends Component {
 
   handleTurnResultContinue = async () => {
     console.log('handleTurnResultContinue')
+    const { rollCard, skipCard } = this.state.nextTurnCards;
     this.setState({
-      modal: 'turnStart'
+      modal: 'turnStart',
+      rollCard,
+      skipCard,
+      nextTurnCards: undefined
     })
   }
 
