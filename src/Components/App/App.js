@@ -8,7 +8,6 @@ import SignupMain from '../SignupMain/SignupMain';
 import LoginMain from '../LoginMain/LoginMain';
 import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import TokenService from '../../Services/TokenService';
 import ScoresMain from '../ScoresMain/ScoresMain';
 
@@ -18,7 +17,7 @@ class App extends Component {
   handleLogIn = (token) => {
     console.log('toggleLoggedIn', token)
     TokenService.saveAuthToken(token);
-    this.props.history.push('/game/setup');
+    this.props.history.push('/');
     this.setState({ isLoggedIn: true })
   }
 

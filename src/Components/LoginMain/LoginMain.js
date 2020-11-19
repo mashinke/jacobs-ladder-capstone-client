@@ -48,7 +48,7 @@ export default class LoginMain extends UserFormComponent {
         this.state.email.value,
         this.state.pass.value
       )
-      this.props.onLoggedIn(token);
+      this.props.onLoggedIn(token, this.props.location);
     } catch (error) {
       this.setState({ error })
     }

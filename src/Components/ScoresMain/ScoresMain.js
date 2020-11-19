@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import APIService from '../../Services/APIService';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import GameScoreItem from '../GameScoreItem/GameScoreItem';
 import Loading from '../Loading/Loading';
 import './ScoresMain.css'
@@ -43,14 +44,16 @@ export default class ScoresMain extends Component {
   }
   render() {
     return (
-      <article class='static'>
-        <h2>Scores</h2>
-        {
-          !this.state.scores
-            ? <Loading label='scores' />
-            : <ul className='allScores'>{this.renderScores()}</ul>
-        }
-      </article>
+      <ProtectedRoute>
+        <article class='static'>
+          <h2>Scores</h2>
+          {
+            !this.state.scores
+              ? <Loading label='scores' />
+              : <ul className='allScores'>{this.renderScores()}</ul>
+          }
+        </article>
+      </ProtectedRoute>
     )
   }
 }
