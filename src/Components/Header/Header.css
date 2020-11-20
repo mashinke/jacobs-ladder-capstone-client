@@ -32,6 +32,10 @@ header{
   
 }
 
+.small-header {
+  height: 4rem;
+}
+
 .small-header-exit {
   position: absolute;
   left: 0;
@@ -42,7 +46,7 @@ header{
 
 .small-header-exit-active {
   opacity: 0;
-  transition: opacity .5s;
+  transition: opacity .3s;
 }
 
 .small-header-enter {
@@ -55,8 +59,8 @@ header{
 
 .small-header-enter-active {
   opacity: 100%;
-  transition: opacity .5s;
-  transition-delay: .5s;
+  transition: opacity .3s;
+  transition-delay: .3s;
 }
 
 .big-header-exit.fancyBorder{
@@ -64,18 +68,18 @@ header{
 }
 
 .big-header-exit-active.fancyBorder {
-  margin-top: -2px;
   min-height: unset;
+  padding-bottom: 0;
   height: 4rem;
   opacity: 0;
-  transition: all .5s;
+  transition: all .3s;
 }
 
 .big-header-enter.fancyBorder {
   height: 4rem;
+  padding-bottom: 0;
   min-height: unset;
   opacity: 0;
-  margin-bottom: -2px;
 }
 
 .big-header-enter.fancyBorder > h1 {
@@ -85,8 +89,8 @@ header{
 .big-header-enter-active.fancyBorder {
   opacity: 100;
   height: 14rem;
-  transition: all .5s;
-  transition-delay: .5s;
+  transition: all .3s;
+  transition-delay: .3s;
 }
 .big-header-enter-done.fancyBorder {
   height: 14rem;

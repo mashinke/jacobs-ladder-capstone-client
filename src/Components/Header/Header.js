@@ -14,7 +14,7 @@ export default function Header(props) {
             timeout={1000}
             classNames='small-header'
             unmountOnExit >
-            <div>
+            <div className='small-header'>
               <h1 className='small-masthead'>Jacob's Ladder</h1>
             </div>
           </CSSTransition>
