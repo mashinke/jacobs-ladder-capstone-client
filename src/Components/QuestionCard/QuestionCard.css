@@ -50,6 +50,10 @@
   flex-grow: 1;
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 @media screen and (min-width: 35rem) {
   .challenge {
     margin: 0 1rem;

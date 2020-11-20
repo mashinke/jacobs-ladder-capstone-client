@@ -15,23 +15,22 @@ export default class GamePlayMain extends Component {
     modal: 'loading',
     gameSettings: {},
     gameState: {}
-
   }
 
   transitionTimeOut = 350;
   transitionDelay = 350;
 
   modal = () => {
-    if (this.state.modal === 'loading')
-      return 'loading';
-    else if (this.state.modal === 'turnResult')
-      return 'turnResult';
-    else if (this.state.modal === 'turnStart') {
+    return this.state.modal;
+  }
+
+  card = () => {
+    if (this.modal() !== 'loading') {
       if (this.state.gameSettings.ended)
-        return 'victoryModal';
+        return 'victory';
       else if (this.state.gameSettings.lastTurn || this.state.onSkip)
-        return 'skipCard';
-      else return 'rollCard';
+        return 'skip'
+      else return 'roll'
     }
   }
 
@@ -107,7 +106,7 @@ export default class GamePlayMain extends Component {
       <ProtectedRoute >
         <div className='game'>
           <CSSTransition
-            in={(this.modal() === 'turnStart')}
+            in={(this.modal() !== 'loading')}
             timeout={this.transitionTimeOut}
             delay={this.transitionDelay}
             classNames='transition'>
@@ -118,7 +117,7 @@ export default class GamePlayMain extends Component {
           </CSSTransition>
           <div className='modalWrapper'>
             <CSSTransition
-              in={(this.modal() === 'rollCard')}
+              in={(this.card() === 'roll')}
               timeout={this.transitionTimeOut}
               delay={this.transitionDelay}
               classNames='transition'
@@ -134,10 +133,11 @@ export default class GamePlayMain extends Component {
                 hintsUsed={this.state.gameState.hintsUsed}
                 maxHints={this.state.gameSettings.maxHints}
                 hintLimit={this.state.gameSettings.hintLimit}
+                onModal={this.modal()}
               />
             </CSSTransition>
             <CSSTransition
-              in={(this.modal() === 'skipCard')}
+              in={(this.card() === 'skip')}
               timeout={this.transitionTimeOut}
               delay={this.transitionDelay}
               classNames='transition'
@@ -154,6 +154,7 @@ export default class GamePlayMain extends Component {
                 maxHints={this.state.gameSettings.maxHints}
                 hintLimit={this.state.gameSettings.hintLimit}
                 lastTurn={this.state.gameSettings.lastTurn}
+                onModal={this.modal}
               />
             </CSSTransition>
             <CSSTransition
@@ -169,7 +170,7 @@ export default class GamePlayMain extends Component {
               />
             </CSSTransition>
             <CSSTransition
-              in={(this.modal() === 'victoryModal')}
+              in={(this.card() === 'victory')}
               timeout={this.transitionTimeOut}
               delay={this.transitionDelay}
               classNames='transition'

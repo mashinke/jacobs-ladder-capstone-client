@@ -36,16 +36,18 @@ export default class TurnResultModal extends Component {
   }
   render() {
     return (
-      <div className='modal'>
-        <FancyBorder>
-          <p className='turnResultMessage'>{this.message()}</p>
-          <p><button
-            className='modalButton'
-            type='button'
-            onClick={() => this.props.onButtonClick()} >
-            {this.buttonText()}
-          </button></p>
-        </FancyBorder>
+      <div className='overlay'>
+        <div className='modal'>
+          <FancyBorder>
+            <p className='turnResultMessage'>{this.message()}</p>
+            <p><button
+              // className='modalButton'
+              type='button'
+              onClick={() => this.props.onButtonClick()} >
+              {this.buttonText()}
+            </button></p>
+          </FancyBorder>
+        </div>
       </div>
     )
   }
