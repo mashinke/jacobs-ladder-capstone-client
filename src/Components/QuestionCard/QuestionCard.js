@@ -53,7 +53,7 @@ export default function QuestionCard(props) {
       )
     }
     return (
-      <form className='card modal'>
+      <form className={`card modal${props.onModal==='turnResult' ? ' hidden' : ''}`}>
         <FancyBorder>
           <div className='challenge'>
             <div className={`challengeAltText${props.onSkip ? ' word' : ''
