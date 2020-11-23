@@ -1,19 +1,13 @@
 .crown {
   position: absolute;
   width: 4rem;
-  top: .5rem;
+  top: 0;
   left: calc(50vw - 2rem);
 }
 
 .smallCrown {
   position: absolute;
   width: 3rem;
-  top: 0rem;
+  top: -.25rem;
   left: calc(50% - 1.5rem);
-}
-
-@media screen and (min-width: 35rem) {
-  .smallCrown {
-    top: .5rem;
-  }
 }

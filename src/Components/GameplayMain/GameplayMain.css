@@ -1,7 +1,7 @@
 .game {
   display: flex;
   flex-direction: column;
-  margin-top: calc(-1rem + 1px);
+  margin-top: 1px;
 }
 
 .path-enter-active > .game {
@@ -19,14 +19,12 @@
 }
 
 .transition-enter-active {
-  transition-property: opacity;
-  transition-duration: .35s;
+  transition: all .35s;
   opacity: 100;
 }
 
 .transition-exit-active {
-  transition-property: opacity;
-  transition-duration: .35s;
+  transition: all .35s;
   opacity: 0;
 }
 

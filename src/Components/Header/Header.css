@@ -1,13 +1,12 @@
 header{
   /* background-color: var(--brightred); */
-  padding-top: 1rem;
   color: var(--brightgold);
 }
 
 
 .hero {
   width: 95%;
-  margin: auto;
+  margin: 0 auto .5rem auto;
   border: 1px solid transparent;
   border-image-source: url('../fancy-border.svg');
   border-image-slice: 33%;
@@ -27,19 +26,20 @@ header{
   text-align: center;
   font-variant: small-caps;
   margin: 0 auto;
-  padding: .75rem 0;
-  height: 4rem;
+  padding: .25rem 0;
+  line-height: .75rem;
+  font-size: 1.25rem;
   
 }
 
 .small-header {
-  height: 4rem;
+  height: 1.25rem;
 }
 
 .small-header-exit {
   position: absolute;
   left: 0;
-  top: 1rem;
+  top: 0;
   width: 100vw;
   opacity: 100;
 }
@@ -53,7 +53,6 @@ header{
   opacity: 0;
   position: absolute;
   left: 0;
-  top: 1rem;
   width: 100vw;
 }
 
@@ -63,35 +62,6 @@ header{
   transition-delay: .3s;
 }
 
-.big-header-exit.fancyBorder{
-  height: 14rem;
-}
-
-.big-header-exit-active.fancyBorder {
-  min-height: unset;
-  padding-bottom: 0;
-  height: 4rem;
-  opacity: 0;
-  transition: all .3s;
-}
-
-.big-header-enter.fancyBorder {
-  height: 4rem;
-  padding-bottom: 0;
-  min-height: unset;
-  opacity: 0;
-}
-
-.big-header-enter.fancyBorder > h1 {
-  opacity: 100;
-}
-
-.big-header-enter-active.fancyBorder {
-  opacity: 100;
-  height: 14rem;
-  transition: all .3s;
-  transition-delay: .3s;
-}
-.big-header-enter-done.fancyBorder {
-  height: 14rem;
+@media screen and (min-width: 35rem) and (max-height: 20rem) {
+  
 }
