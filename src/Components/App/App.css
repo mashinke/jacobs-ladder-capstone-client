@@ -5,6 +5,7 @@
 :root {
   --brightgold: #c28f20;
   --royalblue: #0b0b13;
+  --bluegray: #221b1b;
   --brightred: #5e080b;
   --deepred: #36070a;
 }
@@ -27,7 +28,6 @@ body {
 
 main.base {
   flex-grow: 1;
-  margin-top: 1rem;
   color: var(--brightgold);
   font-family: 'Cardo', serif;
   position: relative;
@@ -125,12 +125,8 @@ button:active {
 
 @media screen and (min-width: 35rem) {
   .modal {
-    padding: 1rem 1rem 0 1rem;
+    padding: 0 .5rem;
     flex-grow: 1;
-  }
-
-  .modalButton {
-    position: static;
   }
 }
 @media screen and (min-width: 65rem) {

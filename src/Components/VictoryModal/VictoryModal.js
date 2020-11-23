@@ -3,7 +3,7 @@ import FancyBorder from '../FancyBorder/FancyBorder';
 import './VictoryModal.css';
 export default function VictoryModal(props) {
   return (
-    <div className='modal'>
+    <div className={`modal`}>
       <FancyBorder crown={true}>
         <p className='victoryMessage'>You've won! Congratulations!</p>
         <p><button

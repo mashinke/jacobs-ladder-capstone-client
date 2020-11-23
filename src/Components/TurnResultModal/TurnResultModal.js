@@ -41,7 +41,7 @@ export default class TurnResultModal extends Component {
           <FancyBorder>
             <p className='turnResultMessage'>{this.message()}</p>
             <p><button
-              // className='modalButton'
+              className='modalButton'
               type='button'
               onClick={() => this.props.onButtonClick()} >
               {this.buttonText()}

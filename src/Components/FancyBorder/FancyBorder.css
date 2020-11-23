@@ -4,13 +4,54 @@
   border-image-slice: 33%;
   border-image-repeat: space;
   border-image-width: 7rem;
-  padding: 3rem 2rem;
-  flex-grow: 1;
-  min-height: 14rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
 }
 
-@media screen and (min-width: 65rem) {
+
+.big-header-exit.fancyBorder{
+  height: 14rem;
+}
+
+.big-header-exit-active.fancyBorder, .big-header-enter.fancyBorder {
+  height: 1.25rem;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin: 0 auto;
+  min-height: unset;
+  opacity: 0;
+}
+
+.big-header-exit-active.fancyBorder {
+  transition: all .3s;
+}
+
+.big-header-enter.fancyBorder > h1 {
+  opacity: 100;
+}
+
+.big-header-enter-active.fancyBorder, .big-header-enter-done {
+  opacity: 100;
+  height: 14rem;
+  padding: 3rem 2rem;
+  transition: all .3s;
+  transition-delay: .3s;
+  margin-bottom: .5rem;
+}
+
+.fancyBorder, .big-header-enter-active.fancyBorder, .big-header-enter-active {
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 35rem) {
+  .fancyBorder {
+    padding-top: 1.125rem;
+    min-height: 10rem;
+  }
+}
+
+/* @media screen and (min-width: 65rem) {
   .fancyBorder {
     padding: 2rem;
   }
-}
+} */

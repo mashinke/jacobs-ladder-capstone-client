@@ -1,10 +1,20 @@
 .answerInputLabel {
   border-radius: .625rem;
   border: 1px solid transparent;
+  background-color: var(--bluegray);
   display: inline-block;
-  padding: .25rem .5rem .375rem .375rem;
-  font-size: 1.25rem;
+  padding: .125rem .5rem .1875rem .5rem;
+  margin: .125rem;
+  font-size: 1rem;
+  transition: all.635s;
 }
+
+.answerInputLabel:hover {
+  border-radius: .625rem;
+  border: 1px solid var(--brightgold);
+  transition: all .635s;
+}
+
 input[type="radio"].answerInputRadio:checked+label {
   border-radius: .625rem;
   border: 1px solid var(--brightgold);

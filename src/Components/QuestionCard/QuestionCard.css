@@ -24,13 +24,16 @@
 
 .challengeText {
   text-align: center;
-  margin: .5rem 0;
+  margin: .25rem 0;
+  font-weight: bold;
+  text-decoration: underline;
 }
 
 .challengeAnswers {
   display: flex;
   justify-content: space-between;
-  padding: 0 1rem;
+  padding: 0 .5rem;
+  margin: .5rem .5rem .5rem;
   flex-direction: column;
   list-style: none;
 }
@@ -46,17 +49,17 @@
 }
 
 .answerButton {
-  font-size: 1.25rem;
+  font-size: 1rem;
   flex-grow: 1;
-}
-
-.hidden {
-  visibility: hidden;
 }
 
 @media screen and (min-width: 35rem) {
   .challenge {
     margin: 0 1rem;
+  }
+
+  .challengeText {
+    margin-top: -1rem;
   }
 
   .challengeAnswers {

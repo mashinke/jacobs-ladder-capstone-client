@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import GameTime from '../GameTime/GameTime';
 import { CSSTransition } from 'react-transition-group';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import GameStatus from '../GameStatus/GameStatus';
@@ -25,7 +24,7 @@ export default class GamePlayMain extends Component {
   }
 
   card = () => {
-    if (this.modal() !== 'loading') {
+    if (this.modal() === 'turnStart') {
       if (this.state.gameSettings.ended)
         return 'victory';
       else if (this.state.gameSettings.lastTurn || this.state.onSkip)
@@ -175,7 +174,9 @@ export default class GamePlayMain extends Component {
               delay={this.transitionDelay}
               classNames='transition'
               unmountOnExit>
-              <VictoryModal onButtonClick={this.handleNewGame} />
+              <VictoryModal 
+                className={this.modal() === 'turnResult' ? ' hidden' : ''}
+                onButtonClick={this.handleNewGame} />
             </CSSTransition>
             <CSSTransition
               in={(this.modal() === 'loading')}
