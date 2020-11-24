@@ -20,7 +20,7 @@ export default class ScoresMain extends Component {
           <ul className='gameScores'>{[
             {
               title: 'Turns',
-              number: score.position
+              number: score.turnNumber
             },
             {
               title: 'Hints',
