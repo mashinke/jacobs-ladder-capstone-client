@@ -12,9 +12,7 @@ export default class UserFormComponent extends FormComponent {
   }
 
   onSubmit = (event) => {
-    console.log('prevent default')
     event.preventDefault();
-    console.log(this)
     return this.handleFormSubmit();
   }
   allowSubmit() {
@@ -48,7 +46,7 @@ export default class UserFormComponent extends FormComponent {
         <form onSubmit={event => this.onSubmit(event)}>
           {this.renderFields()}
           <button
-            class='formButton'
+            className='formButton'
             disabled={!this.allowSubmit()}
             type="submit">{this.buttonText}</button>
         </form>

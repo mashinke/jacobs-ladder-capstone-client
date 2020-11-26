@@ -4,7 +4,7 @@ import FancyBorder from '../FancyBorder/FancyBorder';
 import Loading from '../Loading/Loading';
 import './QuestionCard.css';
 
-export default function QuestionCard(props) {
+function QuestionCard(props) {
   if (props.card.answers) {
     const answerDivs = props.card.answers.map((answerText, i) =>
       <AnswerInput
@@ -13,8 +13,6 @@ export default function QuestionCard(props) {
         selectedAnswer={props.selectedAnswer}
         key={i}
       />)
-    console.log(props.hintsUsed >= props.maxHints)
-    console.log('hintsUsed', props.hintsUsed)
     let cardActions = [(
       <button
         key='answer'
@@ -72,3 +70,11 @@ export default function QuestionCard(props) {
   }
   else { return <Loading label='Card' /> }
 }
+
+QuestionCard.defaultProps = {
+  card: {
+    answers: []
+  }
+}
+
+export default QuestionCard;

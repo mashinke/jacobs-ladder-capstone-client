@@ -13,4 +13,8 @@ export default class FormComponent extends Component {
     const value = this.state[field].value;
     this.setState({ [field]: { value, touched: true } })
   }
+  
+  render() {
+    return null;
+  }
 }

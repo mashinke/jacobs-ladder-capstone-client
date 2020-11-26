@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
-import Crown from '../Crown/Crown';
+import FancyBorder from '../FancyBorder/FancyBorder';
 import './Header.css';
 
 export default function Header(props) {
@@ -33,10 +33,9 @@ export default function Header(props) {
             onExited={() => {
               document.querySelector('html').style.overflowY = 'auto';
             }} >
-            <div className='hero fancyBorder'>
-              <Crown />
+            <FancyBorder crown={true} className='hero'>
               <h1 className='masthead'>Jacob's Ladder</h1>
-            </div>
+            </FancyBorder>
           </CSSTransition>
         )}
       </Route>

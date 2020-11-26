@@ -8,7 +8,7 @@ export default function Loading(props) {
       <div className='modal'>
         <FancyBorder>
           <p className='loadingMessage'>
-          Loading {props.label}. . .
+          Loading {props.label}&nbsp.&nbsp.&nbsp.
           </p>
       </FancyBorder>
       </div>

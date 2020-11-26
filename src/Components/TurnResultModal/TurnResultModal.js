@@ -5,7 +5,6 @@ import './TurnResultModal.css';
 export default class TurnResultModal extends Component {
   buttonText = () => 'Continue';
   message = () => {
-    console.log('message')
     const { roll, correctAnswer, useHint, skipSuccess, stageSize, gameWon, lastTurn } = this.props;
     let message;
     if (gameWon) {
@@ -29,7 +28,6 @@ export default class TurnResultModal extends Component {
         } else {
           message = `Unfortunately your answer was incorrect. The right answer was ‘${correctAnswer}.’${lastTurn ? ' Try again!' : ''}`
         }
-        console.log(message)
       }
     }
     return message;

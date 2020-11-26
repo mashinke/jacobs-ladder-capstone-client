@@ -72,7 +72,6 @@ export default class GamePlayMain extends Component {
   }
 
   handleTurnResultContinue = async () => {
-    console.log('handleTurnResultContinue')
     const { rollCard, skipCard } = this.state.nextTurnCards;
     this.setState({
       modal: 'turnStart',
@@ -88,7 +87,6 @@ export default class GamePlayMain extends Component {
 
   async componentDidMount() {
     const gameData = await APIService.fetchGame();
-    console.log(gameData)
     if (Object.keys(gameData).length === 0) {
       // if gameData object is empty, we need to set up a new game
       return this.props.history.push('/game/setup');
@@ -100,9 +98,7 @@ export default class GamePlayMain extends Component {
   }
 
   render() {
-    console.log('GameMain rendering');
     return (
-      <ProtectedRoute >
         <div className='game'>
           <CSSTransition
             in={(this.modal() !== 'loading')}
@@ -188,7 +184,6 @@ export default class GamePlayMain extends Component {
             </CSSTransition>
           </div>
         </div>
-      </ProtectedRoute>
     )
   }
 }

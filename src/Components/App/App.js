@@ -10,12 +10,12 @@ import SetupGameMain from '../SetupGameMain/SetupGameMain';
 import GamePlayMain from '../GameplayMain/GameplayMain';
 import TokenService from '../../Services/TokenService';
 import ScoresMain from '../ScoresMain/ScoresMain';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 class App extends Component {
   state = { error: null, isLoggedIn: TokenService.hasAuthToken() }
 
   handleLogIn = (token) => {
-    console.log('toggleLoggedIn', token)
     TokenService.saveAuthToken(token);
     this.props.history.push('/');
     this.setState({ isLoggedIn: true })
@@ -87,25 +87,31 @@ class App extends Component {
       {
         path: '/game/scores',
         jsx: props => (
-          <ScoresMain
-            {...props}
-          />
+          <ProtectedRoute>
+            <ScoresMain
+              {...props}
+            />
+          </ProtectedRoute>
         )
       },
       {
         path: '/game/setup',
         jsx: props => (
-          <SetupGameMain
-            {...props}
-          />
+          <ProtectedRoute>
+            <SetupGameMain
+              {...props}
+            />
+          </ProtectedRoute>
         )
       },
       {
         path: '/game/play',
         jsx: props => (
-          <GamePlayMain
-            {...props}
-          />
+          <ProtectedRoute>
+            <GamePlayMain
+              {...props}
+            />
+          </ProtectedRoute>
         )
       }
     ].map(route => (
@@ -135,7 +141,6 @@ class App extends Component {
   }
 
   render() {
-    console.log('App render()')
     return (
       <>
         <Header />

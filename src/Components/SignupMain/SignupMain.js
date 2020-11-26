@@ -76,12 +76,11 @@ export default class SignupMain extends UserFormComponent {
   render() {
     return (
       <PublicOnlyRoute>
-        <main className='base static'>
+        <div className='static'>
           {this.renderForm()}
           <p><Link className='formLink' to='/login'>Log In</Link></p>
-        </main>
+        </div>
       </PublicOnlyRoute>
     )
-
   }
 }

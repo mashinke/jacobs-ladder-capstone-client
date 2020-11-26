@@ -112,7 +112,6 @@ export default class Nav extends Component {
   })
 
   staticPageNavLinks = () => ['/'].map(path => {
-    console.log('Nav render()')
     const links = [
       this.homeLink(),
       this.rulesLink(),

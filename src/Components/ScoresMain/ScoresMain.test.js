@@ -1,15 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
-import App from './App';
+import ScoresMain from './ScoresMain';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render((
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  )
-    , div);
+  ReactDOM.render(<ScoresMain />, div);
   ReactDOM.unmountComponentAtNode(div);
 });

@@ -1,6 +1,6 @@
 .fancyBorder {
   border: .1px solid transparent;
-  border-image-source: url('../fancy-border.svg');
+  border-image-source: url('./fancy-border.svg');
   border-image-slice: 33%;
   border-image-repeat: space;
   border-image-width: 7rem;

@@ -1,7 +1,7 @@
 import React from 'react';
 import './FormInput.css'
 
-export default function FormInput(props) {
+function FormInput(props) {
   return (
     <div key={props.id}>
           <p className='formInput'>
@@ -20,3 +20,9 @@ export default function FormInput(props) {
         </div>
   )
 }
+
+FormInput.defaultProps = {
+  validator: () => {}
+}
+
+export default FormInput;

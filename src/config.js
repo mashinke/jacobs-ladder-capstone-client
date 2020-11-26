@@ -4,5 +4,4 @@ const config = {
   TOKEN_KEY: process.env.REACT_APP_API_TOKEN_KEY
 }
 
-console.log(config)
 export default config;

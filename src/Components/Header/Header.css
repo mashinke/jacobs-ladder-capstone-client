@@ -7,11 +7,6 @@ header{
 .hero {
   width: 95%;
   margin: 0 auto .5rem auto;
-  border: 1px solid transparent;
-  border-image-source: url('../fancy-border.svg');
-  border-image-slice: 33%;
-  border-image-repeat: space;
-  border-image-width: 7rem;
   text-align: center;
   font-size: 1rem; 
   font-family: 'Montserrat', sans;

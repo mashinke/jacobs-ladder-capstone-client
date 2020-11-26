@@ -46,7 +46,6 @@ const APIService = {
     }
   },
   postLogin: async (email, password) => {
-    console.log('logging in')
     const response = await fetch(`${config.API_BASEURL}/auth`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
@@ -60,7 +59,6 @@ const APIService = {
     }
   },
   postUser: async (email, password) => {
-    console.log('signing up');
     const response = await fetch(`${config.API_BASEURL}/user`, {
       method: 'POST',
       headers: { 'content-type': 'application/json' },
