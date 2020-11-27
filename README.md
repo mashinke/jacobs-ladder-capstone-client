@@ -1,5 +1,14 @@
 # Jacob's Ladder - RESTful API client
 
+Visit the [live app](https://jacobs-ladder.vercel.app)
+
+(Note: the first API call may take a while, while the server activates)
+
+## Demo account credentials: 
+
+email: demo@example.net
+password: password
+
 ## About the Game
 My daughter and I created the rules for this game in 2019 as an experiment in 
 language learning.
@@ -7,8 +16,7 @@ language learning.
 Jacob's Ladder is inspired by racing board games such as Snakes and Ladders and
 Candyland, and originally conceived as a board game.
 
-This is the repository for the RESTful client. To see the server code and learn
-about the API, please visit the 
+This is the repository for the RESTful client. To see the server code and API documentation, please visit the 
 [server repository on GitHub](https://github.com/mashinke/jacobs-ladder-server).
 
 
@@ -43,8 +51,7 @@ indicated by the die. If they answer incorrectly, they lose the turn.
 
 Alternately, the player may choose to take a skip card. If they answer it 
 correctly, they advance the number of spaces in a stage. If they answer 
-incorrectly, they lose the turn and can no longer chose a skip card until
-they advance another stage.
+incorrectly, they lose the turn.
 
 ### End game
 
@@ -54,3 +61,12 @@ on their next turn. The player will remain on the last space on the last stage
 until they correctly answer a skip card.
 
 Any player who answers the final card correctly wins the game.
+
+### Screenshots
+
+![Signup screen](readme-assets/signup.png)
+![Game setup screen](readme-assets/game-setup.png)
+![Roll Card](readme-assets/gameplay-1.png)
+![Skip card](readme-assets/gameplay-2.png)
+![Victory screen](readme-assets/victory.png)
+![Scores screen](readme-assets/scores.png)

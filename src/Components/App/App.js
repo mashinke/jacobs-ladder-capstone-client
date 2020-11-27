@@ -58,7 +58,7 @@ class App extends Component {
               The game has one virtual ten-sided die, that is cast once per turn</p>
             <h3>Gameplay</h3>
             <p>Each turn, the player receives an roll card with a question. If they answer the question correctly, they can cast the die and move the number of spaces indicated by the die. If they answer incorrectly, they lose the turn.</p>
-            <p>At the beginning of any turn, the can choose to try a skip card. If they answer it correctly, they can skip to the next stage. If they answer incorrectly, they lose the turn and can no longer play a skip card until they advance another stage.</p>
+            <p>At the beginning of any turn, the can choose to try a skip card. If they answer it correctly, they can skip to the next stage. If they answer incorrectly, they lose the turn.</p>
             <h3>End game</h3>
             <p>When the player reaches the end of the last stage, they must correctly answer a skip card to finish the game. If they answer incorrectly, they must try again on their next turn. The player will remain on the last space on the last stage until they correctly answer a skip card.</p>
             <p>
