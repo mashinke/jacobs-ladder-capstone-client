@@ -61,6 +61,9 @@ export default class LoginMain extends UserFormComponent {
         <div className='static'>
           {this.renderForm()}
           <p><Link className='formLink' to='/signup'>Sign Up</Link></p>
+          <h3>Demo credentials:</h3>
+          <p>Email: demo@example.net</p>
+          <p>Password: password</p>
         </div>
       </PublicOnlyRoute>
     )
