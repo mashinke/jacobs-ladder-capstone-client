@@ -33,12 +33,23 @@ class App extends Component {
       {
         path: '/',
         jsx: props => (
-          <article className='static' id='home'>
-            <h2>About the Game</h2>
-            <p>My daughter and I created the rules for this game in 2019 as an experiment in language learning. </p>
-            <p>Jacob's Ladder is inspired by racing board games such as Snakes and Ladders and Candyland, and originally
+          <>
+            <article className='static' id='home'>
+              <h2>About the Game</h2>
+              <p>My daughter and I created the rules for this game in 2019 as an experiment in language learning. </p>
+              <p>Jacob's Ladder is inspired by racing board games such as Snakes and Ladders and Candyland, and originally
             conceived as a board game. Here it is, adapted to a browser-based web app!</p>
-          </article>
+
+            </article>
+            <footer className='myLinks'>
+              <ul>
+                <li><a href='https://github.com/mashinke/jacobs-ladder-client'>Code Repo</a></li>
+                <li><a href='https://github.com/mashinke'>Other Projects</a></li>
+                <li><a href='https://www.linkedin.com/in/masha-trius/'>My LinkedIn</a></li>
+                <li><a href='mailto:triusmaria@gmail.com'>My Email</a></li>
+              </ul>
+            </footer>
+          </>
         )
       },
       {
